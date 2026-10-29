@@ -1,0 +1,45 @@
+name: Build FoxsMusic Desktop
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            target: win
+            artifact: FoxsMusic-Windows
+          - os: ubuntu-latest
+            target: linux
+            artifact: FoxsMusic-Linux
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm install
+      - name: Build Windows installers
+        if: matrix.target == 'win'
+        run: npm run dist:win
+      - name: Build Linux packages
+        if: matrix.target == 'linux'
+        run: npm run dist:linux
+      - name: Upload installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: release/*
+          if-no-files-found: error
+          retention-days: 14
