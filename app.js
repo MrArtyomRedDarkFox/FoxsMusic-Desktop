@@ -184,7 +184,7 @@
       queueTitle: 'Текущий плейлист', queueEmpty: 'Здесь появятся треки<br>из твоей библиотеки', queueAdd: 'Добавить музыку', localLibrary: 'Локальная библиотека', unknownArtist: 'Неизвестный исполнитель',
       studioTitle: 'Звуковая студия', studioIntro: 'Настрой звучание под своё настроение. Эффекты применяются сразу.', speed: 'Скорость воспроизведения', gain: 'Усиление звука', bass: 'Басы', mid: 'Средние частоты', treble: 'Высокие частоты', resetSound: 'Сбросить настройки', ready: 'ГОТОВ К ЗВУКУ', live: 'LIVE · АНАЛИЗ',
       playerChoose: 'Выбери трек и погружайся в звук', readyStatus: 'ГОТОВ К ВОСПРОИЗВЕДЕНИЮ', playingStatus: 'СЕЙЧАС ИГРАЕТ', pausedStatus: 'ПАУЗА', play: 'Воспроизвести', pause: 'Пауза', favoriteAdd: 'В избранное', favoriteRemove: 'Убрать из избранного', mute: 'Без звука', unmute: 'Включить звук', shuffleOn: 'Выключить перемешивание', shuffleOff: 'Включить перемешивание', repeatOff: 'Повтор выключен', repeatAll: 'Повтор всего плейлиста', repeatOne: 'Повтор одного трека', fullscreen: 'Полноэкранный режим', help: 'Подсказка', searchPlaceholder: 'Поиск музыки, исполнителя...',
-      noPlaylists: 'Нажми +, чтобы создать свою подборку.', effectEnabledToast: 'Анимации включены', effectDisabledToast: 'Анимации выключены', helpTitle: 'FoxsMusic · Быстрые клавиши', helpIntro: 'Управляй музыкой с клавиатуры. На мобильных устройствах используй кнопки плеера.', space: 'Воспроизведение / пауза', seek: 'Перемотка на 5 секунд', searchShortcut: 'Поиск музыки', volumeShortcut: 'Громкость ±5%', muteShortcut: 'Включить / выключить звук', navigationShortcut: 'Следующий / предыдущий трек', shuffleShortcut: 'Перемешивание вкл. / выкл.', repeatShortcut: 'Переключить режим повтора', fullscreenShortcut: 'Включить / выключить полный экран', closeWindow: 'Закрыть открытое окно или панель', understood: 'Понятно',
+      noPlaylists: 'Нажми +, чтобы создать свою подборку.', effectEnabledToast: 'Анимации включены', effectDisabledToast: 'Анимации выключены', helpTitle: 'FoxsMusic · Быстрые клавиши', helpIntro: 'Управляй музыкой с клавиатуры. На мобильных устройствах используй кнопки плеера.', space: 'Воспроизведение / пауза', seek: 'Перемотка на 5 секунд', searchShortcut: 'Поиск музыки', volumeShortcut: 'Громкость ±5%', muteShortcut: 'Включить / выключить звук', navigationShortcut: 'Следующий / предыдущий трек', shuffleShortcut: 'Перемешивание вкл. / выкл.', repeatShortcut: 'Переключить режим повтора', fullscreenShortcut: 'Включить / выключить полный экран', studioShortcut: 'Открыть / закрыть звуковую студию', closeWindow: 'Закрыть открытое окно или панель', understood: 'Понятно',
       trackSuffixOne: 'трек', trackSuffixFew: 'трека', trackSuffixMany: 'треков'
     },
     en: {
@@ -197,7 +197,7 @@
       queueTitle: 'Current playlist', queueEmpty: 'Tracks from your library<br>will appear here', queueAdd: 'Add music', localLibrary: 'Local library', unknownArtist: 'Unknown artist',
       studioTitle: 'Sound studio', studioIntro: 'Tune the sound to your mood. Effects apply instantly.', speed: 'Playback speed', gain: 'Output gain', bass: 'Bass', mid: 'Midrange', treble: 'Treble', resetSound: 'Reset settings', ready: 'READY FOR AUDIO', live: 'LIVE · ANALYSIS',
       playerChoose: 'Choose a track and dive into sound', readyStatus: 'READY TO PLAY', playingStatus: 'NOW PLAYING', pausedStatus: 'PAUSED', play: 'Play', pause: 'Pause', favoriteAdd: 'Add to favorites', favoriteRemove: 'Remove from favorites', mute: 'Mute', unmute: 'Unmute', shuffleOn: 'Turn shuffle off', shuffleOff: 'Turn shuffle on', repeatOff: 'Repeat off', repeatAll: 'Repeat playlist', repeatOne: 'Repeat one track', fullscreen: 'Fullscreen', help: 'Help', searchPlaceholder: 'Search music, artist...',
-      noPlaylists: 'Press + to create your own playlist.', effectEnabledToast: 'Animations enabled', effectDisabledToast: 'Animations disabled', helpTitle: 'FoxsMusic · Keyboard shortcuts', helpIntro: 'Control music with your keyboard. On mobile, use the player buttons.', space: 'Play / pause', seek: 'Seek ±5 seconds', searchShortcut: 'Search music', volumeShortcut: 'Volume ±5%', muteShortcut: 'Toggle mute', navigationShortcut: 'Next / previous track', shuffleShortcut: 'Toggle shuffle', repeatShortcut: 'Cycle repeat mode', fullscreenShortcut: 'Toggle fullscreen', closeWindow: 'Close the open dialog or panel', understood: 'Got it',
+      noPlaylists: 'Press + to create your own playlist.', effectEnabledToast: 'Animations enabled', effectDisabledToast: 'Animations disabled', helpTitle: 'FoxsMusic · Keyboard shortcuts', helpIntro: 'Control music with your keyboard. On mobile, use the player buttons.', space: 'Play / pause', seek: 'Seek ±5 seconds', searchShortcut: 'Search music', volumeShortcut: 'Volume ±5%', muteShortcut: 'Toggle mute', navigationShortcut: 'Next / previous track', shuffleShortcut: 'Toggle shuffle', repeatShortcut: 'Cycle repeat mode', fullscreenShortcut: 'Toggle fullscreen', studioShortcut: 'Open / close Sound Studio', closeWindow: 'Close the open dialog or panel', understood: 'Got it',
       trackSuffixOne: 'track', trackSuffixFew: 'tracks', trackSuffixMany: 'tracks'
     },
     de: {
@@ -210,7 +210,7 @@
       queueTitle: 'Aktuelle Wiedergabeliste', queueEmpty: 'Titel aus deiner Bibliothek<br>erscheinen hier', queueAdd: 'Musik hinzufügen', localLibrary: 'Lokale Bibliothek', unknownArtist: 'Unbekannter Interpret',
       studioTitle: 'Soundstudio', studioIntro: 'Passe den Klang deiner Stimmung an. Effekte werden sofort angewendet.', speed: 'Wiedergabegeschwindigkeit', gain: 'Ausgangsverstärkung', bass: 'Bass', mid: 'Mitten', treble: 'Höhen', resetSound: 'Einstellungen zurücksetzen', ready: 'BEREIT FÜR AUDIO', live: 'LIVE · ANALYSE',
       playerChoose: 'Wähle einen Titel und tauche in den Klang ein', readyStatus: 'BEREIT ZUM ABSPIELEN', playingStatus: 'LÄUFT GERADE', pausedStatus: 'PAUSE', play: 'Abspielen', pause: 'Pause', favoriteAdd: 'Zu Favoriten', favoriteRemove: 'Aus Favoriten entfernen', mute: 'Stummschalten', unmute: 'Ton einschalten', shuffleOn: 'Zufallswiedergabe ausschalten', shuffleOff: 'Zufallswiedergabe einschalten', repeatOff: 'Wiederholung aus', repeatAll: 'Playlist wiederholen', repeatOne: 'Titel wiederholen', fullscreen: 'Vollbildmodus', help: 'Hilfe', searchPlaceholder: 'Musik, Interpret suchen...',
-      noPlaylists: 'Drücke +, um eine Playlist zu erstellen.', effectEnabledToast: 'Animationen aktiviert', effectDisabledToast: 'Animationen deaktiviert', helpTitle: 'FoxsMusic · Tastenkürzel', helpIntro: 'Steuere die Musik mit der Tastatur. Mobil kannst du die Player-Tasten nutzen.', space: 'Wiedergabe / Pause', seek: '±5 Sekunden springen', searchShortcut: 'Musik suchen', volumeShortcut: 'Lautstärke ±5%', muteShortcut: 'Stummschaltung umschalten', navigationShortcut: 'Nächster / vorheriger Titel', shuffleShortcut: 'Zufallswiedergabe umschalten', repeatShortcut: 'Wiederholmodus wechseln', fullscreenShortcut: 'Vollbild umschalten', closeWindow: 'Dialog oder geöffnetes Bedienfeld schließen', understood: 'Verstanden',
+      noPlaylists: 'Drücke +, um eine Playlist zu erstellen.', effectEnabledToast: 'Animationen aktiviert', effectDisabledToast: 'Animationen deaktiviert', helpTitle: 'FoxsMusic · Tastenkürzel', helpIntro: 'Steuere die Musik mit der Tastatur. Mobil kannst du die Player-Tasten nutzen.', space: 'Wiedergabe / Pause', seek: '±5 Sekunden springen', searchShortcut: 'Musik suchen', volumeShortcut: 'Lautstärke ±5%', muteShortcut: 'Stummschaltung umschalten', navigationShortcut: 'Nächster / vorheriger Titel', shuffleShortcut: 'Zufallswiedergabe umschalten', repeatShortcut: 'Wiederholmodus wechseln', fullscreenShortcut: 'Vollbild umschalten', studioShortcut: 'Soundstudio öffnen / schließen', closeWindow: 'Dialog oder geöffnetes Bedienfeld schließen', understood: 'Verstanden',
       trackSuffixOne: 'Titel', trackSuffixFew: 'Titel', trackSuffixMany: 'Titel'
     }
   };
@@ -1963,10 +1963,48 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     const container = $('#customPresetList'); if (!container) return;
     container.innerHTML = '';
     Object.entries(customEqPresets).slice(0, 12).forEach(([name, preset]) => {
-      const button = document.createElement('button'); button.type = 'button'; button.className = 'studio-preset custom-studio-preset'; button.textContent = name;
+      const item = document.createElement('div');
+      item.className = 'custom-preset-item';
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'studio-preset custom-studio-preset';
+      button.textContent = name;
       button.title = `Применить пресет «${name}»`;
-      button.addEventListener('click', () => { Object.assign(audioSettings, preset); applyAudioSettings(); toast(`Пресет «${name}» применён`, 'success'); });
-      container.appendChild(button);
+      button.addEventListener('click', () => {
+        Object.assign(audioSettings, preset);
+        applyAudioSettings();
+        toast(`Пресет «${name}» применён`, 'success');
+      });
+
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'custom-preset-delete';
+      deleteButton.textContent = '×';
+      deleteButton.title = `Удалить пресет «${name}»`;
+      deleteButton.setAttribute('aria-label', `Удалить пресет «${name}»`);
+      deleteButton.addEventListener('click', () => confirmDeleteCustomEqPreset(name));
+
+      item.append(button, deleteButton);
+      container.appendChild(item);
+    });
+  }
+
+  function confirmDeleteCustomEqPreset(name) {
+    if (!Object.prototype.hasOwnProperty.call(customEqPresets, name)) return;
+    openModal(
+      `<h2>Удалить пресет?</h2><p>Пресет «${escapeHTML(name)}» будет удалён. Это действие нельзя отменить.</p><div class="modal-actions"><button class="modal-cancel" data-close-modal>Отмена</button><button class="modal-submit danger-submit" id="confirmDeleteCustomEq">Удалить</button></div>`
+    );
+    $('#confirmDeleteCustomEq', ui.modalRoot).addEventListener('click', () => {
+      if (!Object.prototype.hasOwnProperty.call(customEqPresets, name)) {
+        closeModal();
+        return;
+      }
+      delete customEqPresets[name];
+      persistSettings();
+      renderCustomEqPresets();
+      closeModal();
+      toast(`Пресет «${name}» удалён`, 'success');
     });
   }
   function saveCustomEqPreset() {
@@ -2138,7 +2176,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     $('#playlistNameInput', ui.modalRoot).addEventListener('keydown', event => { if (event.key === 'Enter') submit(); });
   }
   function openHelp() {
-    openModal(`<h2>${tr('helpTitle')}</h2><p>${tr('helpIntro')}</p><div class="help-keys"><kbd>Space</kbd><span>${tr('space')}</span><kbd>← / →</kbd><span>${tr('seek')}</span><kbd>Ctrl + K</kbd><span>${tr('searchShortcut')}</span><kbd>↑ / ↓</kbd><span>${tr('volumeShortcut')}</span><kbd>M</kbd><span>${tr('muteShortcut')}</span><kbd>N / P</kbd><span>${tr('navigationShortcut')}</span><kbd>S</kbd><span>${tr('shuffleShortcut')}</span><kbd>R</kbd><span>${tr('repeatShortcut')}</span><kbd>F / F11</kbd><span>${tr('fullscreenShortcut')}</span><kbd>Esc</kbd><span>${tr('closeWindow')}</span></div><div class="modal-actions" style="margin-top:20px"><button class="modal-submit" data-close-modal>${tr('understood')}</button></div>`);
+    openModal(`<h2>${tr('helpTitle')}</h2><p>${tr('helpIntro')}</p><div class="help-keys"><kbd>Space</kbd><span>${tr('space')}</span><kbd>← / →</kbd><span>${tr('seek')}</span><kbd>Ctrl + K</kbd><span>${tr('searchShortcut')}</span><kbd>Ctrl + Shift + E</kbd><span>${tr('studioShortcut')}</span><kbd>↑ / ↓</kbd><span>${tr('volumeShortcut')}</span><kbd>M</kbd><span>${tr('muteShortcut')}</span><kbd>N / P</kbd><span>${tr('navigationShortcut')}</span><kbd>S</kbd><span>${tr('shuffleShortcut')}</span><kbd>R</kbd><span>${tr('repeatShortcut')}</span><kbd>F / F11</kbd><span>${tr('fullscreenShortcut')}</span><kbd>Esc</kbd><span>${tr('closeWindow')}</span></div><div class="modal-actions" style="margin-top:20px"><button class="modal-submit" data-close-modal>${tr('understood')}</button></div>`);
   }
 
   async function changeCurrentCover(file) {
@@ -2894,6 +2932,12 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     // Ctrl/Cmd+K is available even while the search field itself is focused.
     if ((event.ctrlKey || event.metaKey) && event.code === 'KeyK') {
       event.preventDefault(); document.body.classList.add('search-open'); ui.search.focus(); return;
+    }
+
+    // Ctrl+Shift+E (Cmd+Shift+E on macOS) toggles the Sound Studio from anywhere in the app.
+    // Match the physical key so the shortcut also works with Russian keyboard layouts.
+    if (!event.repeat && (event.ctrlKey || event.metaKey) && event.shiftKey && !event.altKey && event.code === 'KeyE') {
+      event.preventDefault(); toggleSoundStudio(); return;
     }
 
     // F11 is also handled by Electron's main process; this renderer fallback

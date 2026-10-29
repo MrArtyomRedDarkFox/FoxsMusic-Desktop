@@ -66,7 +66,7 @@ FoxsMusic looks for album art embedded in supported audio tags (ID3/FLAC/Vorbis/
 - Предустановки Flat, Bass+, Vocal и Night.
 - Настройки звука сохраняются локально и применяются к последующим трекам.
 
-Открой Audio Studio нажатием на шильдик **SOUND ON** в hero-баннере или на значок шестерёнки в нижней панели. Аудиоэффекты используют Web Audio API; граф создаётся при первом запуске трека.
+Открой Audio Studio нажатием на шильдик **SOUND ON** в hero-баннере, на значок шестерёнки в нижней панели или сочетанием **Ctrl + Shift + E** (на macOS — **Cmd + Shift + E**). Это сочетание открывает и закрывает панель звуковой студии. Аудиоэффекты используют Web Audio API; граф создаётся при первом запуске трека.
 
 ## Возможности
 
@@ -155,7 +155,7 @@ This section documents the baseline features retained in the 1.3.1 build. The cu
 - **Sound studio:** two-deck crossfade, equalizer presets, saved custom EQ presets, playback-rate control, gain/compressor, and optional loudness compensation.
 - **Backup and restore:** JSON backup of library metadata, preferences, playlists, playback queue/history, and original-file paths. The backup does not contain original audio; files need to remain accessible at the saved paths. Legacy blob-only imported audio is reported/skipped on restore rather than being falsely represented as a file path.
 - **Metadata editor:** edits local FoxsMusic metadata fields (title, artist, album, genre, year). It does not rewrite embedded tags in the original source file in this build.
-- **Keyboard/media controls:** Space play/pause; Left/Right seek ±5 seconds; Up/Down adjust volume ±5%; M mute; N/P next/previous; S shuffle; R cycles repeat mode; F fullscreen; Ctrl+K search; Esc closes open dialogs/panels. Letter shortcuts use physical key codes and work with Russian or English keyboard layouts. Media Session actions are also available where supported.
+- **Keyboard/media controls:** Space play/pause; Left/Right seek ±5 seconds; Up/Down adjust volume ±5%; M mute; N/P next/previous; S shuffle; R cycles repeat mode; F fullscreen; Ctrl+K search; Ctrl+Shift+E toggles Sound Studio; Esc closes open dialogs/panels. Letter shortcuts use physical key codes and work with Russian or English keyboard layouts. Media Session actions are also available where supported.
 - **Now Playing overlay:** fullscreen album artwork, transport controls and seeking.
 - **Updates:** manual update check/download/install UI powered by `electron-updater`; real update delivery requires a matching GitHub Release with generated assets.
 

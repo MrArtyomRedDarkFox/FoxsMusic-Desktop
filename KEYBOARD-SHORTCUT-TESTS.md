@@ -6,6 +6,7 @@
 - `Left` / `Right`: seek by 5 seconds, clamped to track bounds. If the volume range is focused, its native left/right adjustment is preserved.
 - `Up` / `Down`: adjust volume by 5%, update all audio decks, persist settings, and synchronize the volume slider; this also refreshes the remembered unmute volume.
 - `Ctrl+K` / `Cmd+K`: opens and focuses search, including when another input is focused.
+- `Ctrl+Shift+E` / `Cmd+Shift+E`: toggles the Sound Studio; physical `KeyE` works on Russian or English layouts and repeated keydown events are ignored.
 - `M`: toggle mute while retaining the last nonzero volume.
 - `N` / `P`: play next / previous track.
 - `S`: toggle shuffle.
@@ -21,6 +22,7 @@ Letter keys are detected by `KeyboardEvent.code` (`KeyM`, `KeyN`, etc.) so the s
 2. Press Left and Right: playback position moves by about 5 seconds in each direction and stays within track boundaries.
 3. Press Up/Down: volume changes by 5 percentage points. Press M twice afterward: mute/unmute should restore the latest nonzero volume.
 4. Press Ctrl+K, type in search, and verify the text is not intercepted by letter shortcuts. Repeat with the Windows input language set to Russian.
+5. Press Ctrl+Shift+E to open the Sound Studio; press it again to close the panel. Hold the shortcut and verify it does not toggle repeatedly. Repeat with the Windows input language set to Russian.
 5. Press N/P: next/previous track. Hold briefly: only one skip per keydown.
 6. Press S twice and verify shuffle indicator changes on/off. Press R three times and verify repeat off/all/one.
 7. Press F twice and verify fullscreen enters then exits.
