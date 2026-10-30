@@ -12,6 +12,30 @@ const { autoUpdater } = require('electron-updater');
 
 const APP_ID = 'com.artyomreddarkfox.foxsmusic';
 const APP_SCHEME = 'foxsmusic';
+
+const DIALOG_COPY = {
+  ru: {
+    addAudio: 'Добавить музыку в FoxsMusic', chooseOriginalAudio: 'Выбрать оригинальный аудиофайл',
+    audioFiles: 'Аудиофайлы', allFiles: 'Все файлы', chooseLibraryFolder: 'Выбрать папку музыкальной библиотеки',
+    addSourceFolders: 'Добавить папки-источники для умной библиотеки', saveBackup: 'Сохранить резервную копию FoxsMusic',
+    backupFile: 'Резервная копия FoxsMusic', chooseBackup: 'Выбрать резервную копию FoxsMusic'
+  },
+  en: {
+    addAudio: 'Add music to FoxsMusic', chooseOriginalAudio: 'Choose original audio file',
+    audioFiles: 'Audio files', allFiles: 'All files', chooseLibraryFolder: 'Choose music library folder',
+    addSourceFolders: 'Add smart library source folders', saveBackup: 'Save FoxsMusic backup',
+    backupFile: 'FoxsMusic backup', chooseBackup: 'Choose FoxsMusic backup'
+  },
+  de: {
+    addAudio: 'Musik zu FoxsMusic hinzufügen', chooseOriginalAudio: 'Originalaudiodatei auswählen',
+    audioFiles: 'Audiodateien', allFiles: 'Alle Dateien', chooseLibraryFolder: 'Musikbibliotheksordner auswählen',
+    addSourceFolders: 'Quellordner zur intelligenten Bibliothek hinzufügen', saveBackup: 'FoxsMusic-Sicherung speichern',
+    backupFile: 'FoxsMusic-Sicherung', chooseBackup: 'FoxsMusic-Sicherung auswählen'
+  }
+};
+function dialogCopy(locale) {
+  return DIALOG_COPY[locale === 'en' || locale === 'de' ? locale : 'ru'];
+}
 const MAX_FOLDER_FILES = 10000;
 const AUDIO_EXTENSIONS = new Set([
   'mp3', 'wav', 'flac', 'ogg', 'm4a', 'aac', 'opus', 'wma', 'aiff', 'alac', 'webm', 'oga', 'mp4'
@@ -277,12 +301,13 @@ async function scanAudioFolder(rootDirectory) {
   return results.sort((a, b) => a.path.localeCompare(b.path, undefined, { numeric: true, sensitivity: 'base' }));
 }
 
-ipcMain.handle('foxsmusic:select-audio-files', async (event, allowMultiple = true) => {
+ipcMain.handle('foxsmusic:select-audio-files', async (event, allowMultiple = true, locale = 'ru') => {
   assertTrustedSender(event);
+  const copy = dialogCopy(locale);
   const result = await dialog.showOpenDialog(mainWindow, {
-    title: allowMultiple ? 'Добавить музыку в FoxsMusic' : 'Выбрать оригинальный аудиофайл',
+    title: allowMultiple ? copy.addAudio : copy.chooseOriginalAudio,
     properties: allowMultiple ? ['openFile', 'multiSelections'] : ['openFile'],
-    filters: [{ name: 'Аудиофайлы', extensions: [...AUDIO_EXTENSIONS] }, { name: 'Все файлы', extensions: ['*'] }]
+    filters: [{ name: copy.audioFiles, extensions: [...AUDIO_EXTENSIONS] }, { name: copy.allFiles, extensions: ['*'] }]
   });
   if (result.canceled) return [];
   const records = [];
@@ -293,10 +318,11 @@ ipcMain.handle('foxsmusic:select-audio-files', async (event, allowMultiple = tru
   return records;
 });
 
-ipcMain.handle('foxsmusic:select-audio-folder', async event => {
+ipcMain.handle('foxsmusic:select-audio-folder', async (event, locale = 'ru') => {
   assertTrustedSender(event);
+  const copy = dialogCopy(locale);
   const result = await dialog.showOpenDialog(mainWindow, {
-    title: 'Выбрать папку музыкальной библиотеки',
+    title: copy.chooseLibraryFolder,
     properties: ['openDirectory']
   });
   if (result.canceled || !result.filePaths[0]) return { canceled: true, folderPath: null, records: [] };
@@ -309,10 +335,11 @@ ipcMain.handle('foxsmusic:select-audio-folder', async event => {
   return { canceled: false, folderPath, records };
 });
 
-ipcMain.handle('foxsmusic:select-source-folders', async event => {
+ipcMain.handle('foxsmusic:select-source-folders', async (event, locale = 'ru') => {
   assertTrustedSender(event);
+  const copy = dialogCopy(locale);
   const result = await dialog.showOpenDialog(mainWindow, {
-    title: 'Добавить папки-источники для умной библиотеки',
+    title: copy.addSourceFolders,
     properties: ['openDirectory', 'multiSelections']
   });
   if (result.canceled) return { canceled: true, folderPaths: [] };
@@ -656,24 +683,26 @@ ipcMain.handle('foxsmusic:get-track-metadata', async (event, filePath) => {
   } catch (_) { return null; }
 });
 
-ipcMain.handle('foxsmusic:save-backup', async (event, content) => {
+ipcMain.handle('foxsmusic:save-backup', async (event, content, locale = 'ru') => {
   assertTrustedSender(event);
   if (typeof content !== 'string' || Buffer.byteLength(content, 'utf8') > 60 * 1024 * 1024) throw new Error('Резервная копия слишком большая или некорректная');
+  const copy = dialogCopy(locale);
   const result = await dialog.showSaveDialog(mainWindow, {
-    title: 'Сохранить резервную копию FoxsMusic',
+    title: copy.saveBackup,
     defaultPath: `FoxsMusic-backup-${new Date().toISOString().slice(0, 10)}.json`,
-    filters: [{ name: 'Резервная копия FoxsMusic', extensions: ['json'] }]
+    filters: [{ name: copy.backupFile, extensions: ['json'] }]
   });
   if (result.canceled || !result.filePath) return { canceled: true };
   await fsp.writeFile(result.filePath, content, { encoding: 'utf8', flag: 'w' });
   return { canceled: false, filePath: result.filePath };
 });
 
-ipcMain.handle('foxsmusic:load-backup', async event => {
+ipcMain.handle('foxsmusic:load-backup', async (event, locale = 'ru') => {
   assertTrustedSender(event);
+  const copy = dialogCopy(locale);
   const result = await dialog.showOpenDialog(mainWindow, {
-    title: 'Выбрать резервную копию FoxsMusic', properties: ['openFile'],
-    filters: [{ name: 'Резервная копия FoxsMusic', extensions: ['json'] }]
+    title: copy.chooseBackup, properties: ['openFile'],
+    filters: [{ name: copy.backupFile, extensions: ['json'] }]
   });
   if (result.canceled || !result.filePaths[0]) return { canceled: true };
   const stat = await fsp.stat(result.filePaths[0]);

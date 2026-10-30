@@ -215,6 +215,1679 @@
     }
   };
   function tr(key) { return (LANGUAGES[currentLocale] || LANGUAGES.ru)[key] ?? LANGUAGES.ru[key] ?? key; }
+
+  // Additional UI copy that used to remain hard-coded in Russian outside LANGUAGES.
+  // Keys are the original Russian phrases; values are [English, German].
+  const INLINE_TRANSLATIONS = new Map(Object.entries({
+  "Настройки": [
+    "Settings",
+    "Einstellungen"
+  ],
+  "Язык интерфейса": [
+    "Interface language",
+    "Anzeigesprache"
+  ],
+  "Выбери язык приложения.": [
+    "Choose the app language.",
+    "Wähle die Sprache der App."
+  ],
+  "Русский": [
+    "Russian",
+    "Russisch"
+  ],
+  "Визуальные эффекты": [
+    "Visual effects",
+    "Visuelle Effekte"
+  ],
+  "Свечение, движение фона и анимации.": [
+    "Glow, background motion and animations.",
+    "Leuchten, Hintergrundbewegung und Animationen."
+  ],
+  "Эффекты включены по умолчанию.": [
+    "Effects are enabled by default.",
+    "Effekte sind standardmäßig aktiviert."
+  ],
+  "Оформление профиля": [
+    "Profile appearance",
+    "Profilgestaltung"
+  ],
+  "Настрой стиль, основной цвет и градиент.": [
+    "Customize the style, accent color and gradient.",
+    "Passe Stil, Akzentfarbe und Farbverlauf an."
+  ],
+  "ПРОФИЛЬ FOXSMUSIC": [
+    "FOXSMUSIC PROFILE",
+    "FOXSMUSIC-PROFIL"
+  ],
+  "Вид профиля": [
+    "Profile style",
+    "Profilstil"
+  ],
+  "Классический": [
+    "Classic",
+    "Klassisch"
+  ],
+  "Неоновый": [
+    "Neon",
+    "Neon"
+  ],
+  "Стеклянный": [
+    "Glass",
+    "Glas"
+  ],
+  "Сезонный режим": [
+    "Seasonal mode",
+    "Saisonmodus"
+  ],
+  "Обычный": [
+    "Normal",
+    "Normal"
+  ],
+  "Хэллоуинский": [
+    "Halloween",
+    "Halloween"
+  ],
+  "Новогодний": [
+    "Christmas",
+    "Weihnachten"
+  ],
+  "Основной цвет": [
+    "Accent color",
+    "Akzentfarbe"
+  ],
+  "Градиент": [
+    "Gradient",
+    "Farbverlauf"
+  ],
+  "Багровый": [
+    "Crimson",
+    "Karmesinrot"
+  ],
+  "Тлеющий огонь": [
+    "Ember",
+    "Glut"
+  ],
+  "Фиолетовый": [
+    "Violet",
+    "Violett"
+  ],
+  "Океан": [
+    "Ocean",
+    "Ozean"
+  ],
+  "Монохром": [
+    "Monochrome",
+    "Monochrom"
+  ],
+  "Сбросить оформление профиля и цвет": [
+    "Reset profile appearance and color",
+    "Profilgestaltung und Farbe zurücksetzen"
+  ],
+  "Автор:": [
+    "Author:",
+    "Autor:"
+  ],
+  "Умная библиотека": [
+    "Smart library",
+    "Intelligente Bibliothek"
+  ],
+  "Найди точные дубликаты и проверь доступность оригинальных файлов.": [
+    "Find exact duplicates and check whether the original files are available.",
+    "Finde exakte Duplikate und prüfe, ob die Originaldateien verfügbar sind."
+  ],
+  "Проверить библиотеку": [
+    "Check library",
+    "Bibliothek prüfen"
+  ],
+  "Проверка записей в библиотеке. Оригинальные файлы не изменяются.": [
+    "Library entries will be checked. Original files will not be changed.",
+    "Bibliothekseinträge werden geprüft. Originaldateien bleiben unverändert."
+  ],
+  "Добавить папки-источники": [
+    "Add source folders",
+    "Quellordner hinzufügen"
+  ],
+  "Найти дубликаты во всех источниках": [
+    "Find duplicates in all sources",
+    "Duplikate in allen Quellen finden"
+  ],
+  "Проверяются все зарегистрированные папки-источники, включая вложенные папки. После подтверждения лишние точные копии перемещаются в системную корзину; один оригинал каждой группы остаётся.": [
+    "All registered source folders, including subfolders, are checked. After confirmation, extra exact copies are moved to the system recycle bin; one original from each group is kept.",
+    "Alle registrierten Quellordner einschließlich Unterordner werden geprüft. Nach der Bestätigung werden zusätzliche identische Kopien in den Papierkorb verschoben; eine Originaldatei pro Gruppe bleibt erhalten."
+  ],
+  "Резервная копия": [
+    "Backup",
+    "Sicherung"
+  ],
+  "Сохрани плейлисты, настройки, метаданные и ссылки на оригинальные файлы.": [
+    "Save playlists, settings, metadata and links to the original files.",
+    "Sichere Wiedergabelisten, Einstellungen, Metadaten und Verknüpfungen zu den Originaldateien."
+  ],
+  "Создать копию": [
+    "Create backup",
+    "Sicherung erstellen"
+  ],
+  "Восстановить": [
+    "Restore",
+    "Wiederherstellen"
+  ],
+  "Оригинальные аудиофайлы в копию не включаются; сохраняются пути к ним.": [
+    "Original audio files are not included; their file paths are saved.",
+    "Originale Audiodateien werden nicht gesichert; ihre Dateipfade werden gespeichert."
+  ],
+  "Обновления FoxsMusic": [
+    "FoxsMusic updates",
+    "FoxsMusic-Updates"
+  ],
+  "Проверяй новые версии из GitHub Releases.": [
+    "Check for new versions in GitHub Releases.",
+    "Suche nach neuen Versionen in GitHub Releases."
+  ],
+  "Проверить обновления": [
+    "Check for updates",
+    "Nach Updates suchen"
+  ],
+  "Скачать": [
+    "Download",
+    "Herunterladen"
+  ],
+  "Перезапустить": [
+    "Restart",
+    "Neu starten"
+  ],
+  "Автообновление заработает после публикации релизов в настроенном GitHub-репозитории.": [
+    "Automatic updates will work after releases are published in the configured GitHub repository.",
+    "Automatische Updates funktionieren, sobald Releases im konfigurierten GitHub-Repository veröffentlicht werden."
+  ],
+  "Очистить импортированные треки": [
+    "Clear imported tracks",
+    "Importierte Titel entfernen"
+  ],
+  "Уберёт треки из FoxsMusic, но оставит оригинальные файлы на компьютере.": [
+    "This removes tracks from FoxsMusic but keeps the original files on your computer.",
+    "Dadurch werden Titel aus FoxsMusic entfernt, die Originaldateien auf deinem Computer bleiben erhalten."
+  ],
+  "Очистить": [
+    "Clear",
+    "Leeren"
+  ],
+  "БИБЛИОТЕКА": [
+    "LIBRARY",
+    "BIBLIOTHEK"
+  ],
+  "Моя музыка": [
+    "My music",
+    "Meine Musik"
+  ],
+  "Избранное": [
+    "Favorites",
+    "Favoriten"
+  ],
+  "Плейлисты": [
+    "Playlists",
+    "Wiedergabelisten"
+  ],
+  "История": [
+    "History",
+    "Verlauf"
+  ],
+  "Добавить музыку": [
+    "Add music",
+    "Musik hinzufügen"
+  ],
+  "Импортировать папку": [
+    "Import folder",
+    "Ordner importieren"
+  ],
+  "ИСТОЧНИК БИБЛИОТЕКИ": [
+    "LIBRARY SOURCE",
+    "BIBLIOTHEKSQUELLE"
+  ],
+  "ТВОИ ПЛЕЙЛИСТЫ": [
+    "YOUR PLAYLISTS",
+    "DEINE WIEDERGABELISTEN"
+  ],
+  "Библиотека хранится на устройстве": [
+    "Library is stored on this device",
+    "Bibliothek wird auf diesem Gerät gespeichert"
+  ],
+  "ТВОЯ МУЗЫКА. ТВОИ ПРАВИЛА.": [
+    "YOUR MUSIC. YOUR RULES.",
+    "DEINE MUSIK. DEINE REGELN."
+  ],
+  "Тёмный звук для твоего мира.": [
+    "Dark sound for your world.",
+    "Dunkler Sound für deine Welt."
+  ],
+  "Недавно добавленные": [
+    "Recently added",
+    "Kürzlich hinzugefügt"
+  ],
+  "Твоя коллекция. Твой ритм.": [
+    "Your collection. Your rhythm.",
+    "Deine Sammlung. Dein Rhythmus."
+  ],
+  "Ни одного лишнего звука.": [
+    "Nothing but sound.",
+    "Kein überflüssiger Klang."
+  ],
+  "Загрузить музыку": [
+    "Upload music",
+    "Musik laden"
+  ],
+  "Треки библиотеки": [
+    "Library tracks",
+    "Bibliothekstitel"
+  ],
+  "Музыка, которая хранится у тебя": [
+    "Music stored on your device",
+    "Musik auf deinem Gerät"
+  ],
+  "НАЗВАНИЕ": [
+    "TITLE",
+    "TITEL"
+  ],
+  "ДОБАВЛЕН": [
+    "ADDED",
+    "HINZUGEFÜGT"
+  ],
+  "Твоя музыка начинается здесь": [
+    "Your music starts here",
+    "Deine Musik beginnt hier"
+  ],
+  "Добавь MP3, WAV, FLAC, OGG или другой аудиофайл.": [
+    "Add an MP3, WAV, FLAC, OGG or another audio file.",
+    "Füge eine MP3-, WAV-, FLAC-, OGG- oder andere Audiodatei hinzu."
+  ],
+  "Треки останутся в библиотеке на этом устройстве.": [
+    "Tracks will stay in the library on this device.",
+    "Die Titel bleiben in der Bibliothek auf diesem Gerät."
+  ],
+  "Выбрать аудиофайлы": [
+    "Choose audio files",
+    "Audiodateien auswählen"
+  ],
+  "или перетащи файлы в окно": [
+    "or drag files into the window",
+    "oder ziehe Dateien in das Fenster"
+  ],
+  "Текущий плейлист": [
+    "Current playlist",
+    "Aktuelle Wiedergabeliste"
+  ],
+  "Здесь появятся треки": [
+    "Tracks will appear here",
+    "Hier erscheinen Titel"
+  ],
+  "из твоей библиотеки": [
+    "from your library",
+    "aus deiner Bibliothek"
+  ],
+  "ЛОКАЛЬНАЯ БИБЛИОТЕКА": [
+    "LOCAL LIBRARY",
+    "LOKALE BIBLIOTHEK"
+  ],
+  "Обложка": [
+    "Cover art",
+    "Coverbild"
+  ],
+  "Звуковая студия": [
+    "Sound studio",
+    "Soundstudio"
+  ],
+  "Настрой звучание под своё настроение. Эффекты применяются сразу.": [
+    "Tune the sound to your mood. Effects apply instantly.",
+    "Passe den Klang an deine Stimmung an. Effekte werden sofort angewendet."
+  ],
+  "ГОТОВ К ЗВУКУ": [
+    "READY FOR AUDIO",
+    "BEREIT FÜR AUDIO"
+  ],
+  "Скорость воспроизведения": [
+    "Playback speed",
+    "Wiedergabegeschwindigkeit"
+  ],
+  "0.5× медленнее": [
+    "0.5× slower",
+    "0,5× langsamer"
+  ],
+  "1.5× быстрее": [
+    "1.5× faster",
+    "1,5× schneller"
+  ],
+  "Усиление звука": [
+    "Output gain",
+    "Ausgangsverstärkung"
+  ],
+  "Басы": [
+    "Bass",
+    "Bass"
+  ],
+  "Средние частоты": [
+    "Midrange",
+    "Mitten"
+  ],
+  "Высокие частоты": [
+    "Treble",
+    "Höhen"
+  ],
+  "Плавный переход между треками": [
+    "Crossfade between tracks",
+    "Überblendung zwischen Titeln"
+  ],
+  "Выкл.": [
+    "Off",
+    "Aus"
+  ],
+  "Выравнивание громкости": [
+    "Volume normalization",
+    "Lautstärkeausgleich"
+  ],
+  "Мягко компенсирует слишком тихие и громкие участки.": [
+    "Gently balances sections that are too quiet or too loud.",
+    "Gleicht zu leise und zu laute Abschnitte sanft aus."
+  ],
+  "Сохранить свой пресет": [
+    "Save custom preset",
+    "Eigenes Preset speichern"
+  ],
+  "Сбросить настройки": [
+    "Reset settings",
+    "Einstellungen zurücksetzen"
+  ],
+  "Выбери трек и погружайся в звук": [
+    "Choose a track and dive into sound",
+    "Wähle einen Titel und tauche in den Klang ein"
+  ],
+  "ГОТОВ К ВОСПРОИЗВЕДЕНИЮ": [
+    "READY TO PLAY",
+    "BEREIT ZUM ABSPIELEN"
+  ],
+  "Выбери трек, чтобы начать": [
+    "Choose a track to get started",
+    "Wähle einen Titel, um zu beginnen"
+  ],
+  "Звук ВКЛ": [
+    "SOUND ON",
+    "TON AN"
+  ],
+  "В выбранной папке пока нет музыки": [
+    "There is no music in the selected folder yet",
+    "Im ausgewählten Ordner befinden sich noch keine Musikdateien"
+  ],
+  "Добавь аудиофайлы в выбранную папку или выбери другой музыкальный каталог.": [
+    "Add audio files to the selected folder or choose another music folder.",
+    "Füge Audiodateien zum ausgewählten Ordner hinzu oder wähle einen anderen Musikordner."
+  ],
+  "В этом разделе пока нет подходящих треков.": [
+    "There are no matching tracks in this section yet.",
+    "In diesem Bereich gibt es noch keine passenden Titel."
+  ],
+  "Смени поиск или добавь музыку в избранное / плейлист.": [
+    "Change the search or add music to favorites / a playlist.",
+    "Ändere die Suche oder füge Musik zu Favoriten / einer Wiedergabeliste hinzu."
+  ],
+  "Выбрать другую папку": [
+    "Choose another folder",
+    "Anderen Ordner auswählen"
+  ],
+  "Убрать из очереди": [
+    "Remove from queue",
+    "Aus Warteschlange entfernen"
+  ],
+  "Неизвестный исполнитель": [
+    "Unknown artist",
+    "Unbekannter Interpret"
+  ],
+  "Локальная библиотека": [
+    "Local library",
+    "Lokale Bibliothek"
+  ],
+  "Воспроизвести": [
+    "Play",
+    "Abspielen"
+  ],
+  "Добавить в очередь": [
+    "Add to queue",
+    "Zur Warteschlange hinzufügen"
+  ],
+  "Редактировать сведения": [
+    "Edit details",
+    "Details bearbeiten"
+  ],
+  "Изменить обложку": [
+    "Change cover",
+    "Cover ändern"
+  ],
+  "Удалить из библиотеки": [
+    "Remove from library",
+    "Aus Bibliothek entfernen"
+  ],
+  "Закрыть": [
+    "Close",
+    "Schließen"
+  ],
+  "Отмена": [
+    "Cancel",
+    "Abbrechen"
+  ],
+  "Удалить": [
+    "Delete",
+    "Löschen"
+  ],
+  "Сохранить": [
+    "Save",
+    "Speichern"
+  ],
+  "Сохранить сведения": [
+    "Save details",
+    "Details speichern"
+  ],
+  "Название": [
+    "Title",
+    "Titel"
+  ],
+  "Исполнитель": [
+    "Artist",
+    "Interpret"
+  ],
+  "Альбом": [
+    "Album",
+    "Album"
+  ],
+  "Жанр": [
+    "Genre",
+    "Genre"
+  ],
+  "Год": [
+    "Year",
+    "Jahr"
+  ],
+  "Очистить поиск": [
+    "Clear search",
+    "Suche löschen"
+  ],
+  "Случайный трек": [
+    "Shuffle a track",
+    "Zufälligen Titel wählen"
+  ],
+  "Перемешать": [
+    "Shuffle",
+    "Zufällige Wiedergabe"
+  ],
+  "Очистить очередь": [
+    "Clear queue",
+    "Warteschlange leeren"
+  ],
+  "Показать текущий плейлист": [
+    "Show current playlist",
+    "Aktuelle Wiedergabeliste anzeigen"
+  ],
+  "Изменить сортировку": [
+    "Change sorting",
+    "Sortierung ändern"
+  ],
+  "Предыдущий трек": [
+    "Previous track",
+    "Vorheriger Titel"
+  ],
+  "Следующий трек": [
+    "Next track",
+    "Nächster Titel"
+  ],
+  "Изменить обложку текущего трека": [
+    "Change current track cover",
+    "Cover des aktuellen Titels ändern"
+  ],
+  "SOUND ON": [
+    "SOUND ON",
+    "TON AN"
+  ],
+  "Удалить пресет?": [
+    "Delete preset?",
+    "Preset löschen?"
+  ],
+  "Пресет «": [
+    "Preset “",
+    "Preset „"
+  ],
+  "» будет удалён. Это действие нельзя отменить.": [
+    "” will be deleted. This action cannot be undone.",
+    "“ wird gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden."
+  ],
+  "Применить пресет «": [
+    "Apply preset “",
+    "Preset „ anwenden: „"
+  ],
+  "» применён": [
+    "” applied",
+    "“ angewendet"
+  ],
+  "» сохранён": [
+    "” saved",
+    "“ gespeichert"
+  ],
+  "» удалён": [
+    "” deleted",
+    "“ gelöscht"
+  ],
+  "Сохранить пресет эквалайзера": [
+    "Save equalizer preset",
+    "Equalizer-Preset speichern"
+  ],
+  "Сохраняются басы, средние частоты, высокие частоты и усиление звука.": [
+    "Bass, midrange, treble and output gain will be saved.",
+    "Bass, Mitten, Höhen und Ausgangsverstärkung werden gespeichert."
+  ],
+  "Название пресета": [
+    "Preset name",
+    "Presetname"
+  ],
+  "Например, My Bass": [
+    "For example, My Bass",
+    "Zum Beispiel My Bass"
+  ],
+  "Введи название пресета.": [
+    "Enter a preset name.",
+    "Gib einen Presetnamen ein."
+  ],
+  "Неизвестная ошибка": [
+    "Unknown error",
+    "Unbekannter Fehler"
+  ],
+  "Сначала добавь музыку в библиотеку.": [
+    "Add music to your library first.",
+    "Füge zuerst Musik zu deiner Bibliothek hinzu."
+  ],
+  "Нажми Play ещё раз, чтобы разрешить воспроизведение.": [
+    "Press Play again to allow playback.",
+    "Drücke erneut auf Wiedergabe, um die Wiedergabe zu erlauben."
+  ],
+  "Не удалось воспроизвести этот файл. Попробуй MP3, WAV или другой аудиофайл.": [
+    "Could not play this file. Try an MP3, WAV or another audio file.",
+    "Diese Datei konnte nicht abgespielt werden. Versuche es mit MP3, WAV oder einem anderen Audioformat."
+  ],
+  "Не удалось запустить воспроизведение. Проверь аудиофайл и попробуй ещё раз.": [
+    "Playback could not be started. Check the audio file and try again.",
+    "Die Wiedergabe konnte nicht gestartet werden. Prüfe die Audiodatei und versuche es erneut."
+  ],
+  "Добавь музыку, чтобы начать воспроизведение.": [
+    "Add music to start playback.",
+    "Füge Musik hinzu, um die Wiedergabe zu starten."
+  ],
+  "Трек добавлен в очередь": [
+    "Track added to queue",
+    "Titel zur Warteschlange hinzugefügt"
+  ],
+  "Очередь очищена. Текущий трек продолжает играть.": [
+    "Queue cleared. The current track keeps playing.",
+    "Warteschlange geleert. Der aktuelle Titel wird weiter abgespielt."
+  ],
+  "Сначала выбери трек.": [
+    "Choose a track first.",
+    "Wähle zuerst einen Titel."
+  ],
+  "Сначала выбери трек, чтобы сменить обложку.": [
+    "Choose a track before changing its cover.",
+    "Wähle zuerst einen Titel, um das Cover zu ändern."
+  ],
+  "Панель плейлиста скрыта": [
+    "Playlist panel hidden",
+    "Playlistleiste ausgeblendet"
+  ],
+  "Панель плейлиста включена": [
+    "Playlist panel shown",
+    "Playlistleiste eingeblendet"
+  ],
+  "Загрузка обновления началась.": [
+    "Update download started.",
+    "Der Update-Download wurde gestartet."
+  ],
+  "Выравнивание громкости включено": [
+    "Volume normalization enabled",
+    "Lautstärkeausgleich aktiviert"
+  ],
+  "Выравнивание громкости выключено": [
+    "Volume normalization disabled",
+    "Lautstärkeausgleich deaktiviert"
+  ],
+  "Настройки звука сброшены": [
+    "Audio settings reset",
+    "Audioeinstellungen zurückgesetzt"
+  ],
+  "Полноэкранный режим недоступен в этом окне.": [
+    "Fullscreen mode is not available in this window.",
+    "Der Vollbildmodus ist in diesem Fenster nicht verfügbar."
+  ],
+  "Звуковые эффекты недоступны в этом окружении.": [
+    "Audio effects are not available in this environment.",
+    "Audioeffekte sind in dieser Umgebung nicht verfügbar."
+  ],
+  "Не удалось включить аудиоэффекты. Попробуй перезапустить трек.": [
+    "Could not enable audio effects. Try restarting the track.",
+    "Audioeffekte konnten nicht aktiviert werden. Starte den Titel erneut."
+  ],
+  "Аудиофайл не удалось подготовить к плавному переходу.": [
+    "The audio file could not be prepared for crossfade.",
+    "Die Audiodatei konnte nicht für die Überblendung vorbereitet werden."
+  ],
+  "Истекло время ожидания аудиофайла.": [
+    "Timed out while waiting for the audio file.",
+    "Zeitüberschreitung beim Warten auf die Audiodatei."
+  ],
+  "Не удалось подготовить переход.": [
+    "Could not prepare the crossfade.",
+    "Die Überblendung konnte nicht vorbereitet werden."
+  ],
+  "Не удалось открыть выбор аудиофайлов.": [
+    "Could not open the audio file picker.",
+    "Der Audiodateiauswahldialog konnte nicht geöffnet werden."
+  ],
+  "Не нашёл аудиофайлы. Попробуй MP3, WAV, FLAC или OGG.": [
+    "No audio files found. Try MP3, WAV, FLAC or OGG.",
+    "Keine Audiodateien gefunden. Versuche MP3, WAV, FLAC oder OGG."
+  ],
+  "Импорт уже выполняется — подожди окончания.": [
+    "An import is already running — wait for it to finish.",
+    "Ein Import läuft bereits — warte, bis er abgeschlossen ist."
+  ],
+  "Не удалось очистить библиотеку": [
+    "Could not clear the library",
+    "Die Bibliothek konnte nicht geleert werden"
+  ],
+  "Удаление дубликатов отменено": [
+    "Duplicate removal canceled",
+    "Das Entfernen von Duplikaten wurde abgebrochen"
+  ],
+  "Не удалось очистить библиотеку. Попробуй ещё раз.": [
+    "Could not clear the library. Try again.",
+    "Die Bibliothek konnte nicht geleert werden. Versuche es erneut."
+  ],
+  "Не удалось сохранить библиотеку": [
+    "Could not save the library",
+    "Die Bibliothek konnte nicht gespeichert werden"
+  ],
+  "Не удалось сохранить трек в браузере. Проверь свободное место.": [
+    "Could not save the track in the browser. Check available storage.",
+    "Der Titel konnte nicht im Browser gespeichert werden. Prüfe den verfügbaren Speicherplatz."
+  ],
+  "Локальное сохранение недоступно": [
+    "Local storage is unavailable",
+    "Lokale Speicherung ist nicht verfügbar"
+  ],
+  "Не удалось сохранить сведения о треке.": [
+    "Could not save track details.",
+    "Titeldetails konnten nicht gespeichert werden."
+  ],
+  "Название трека не может быть пустым.": [
+    "Track title cannot be empty.",
+    "Der Titel darf nicht leer sein."
+  ],
+  "Сведения о треке сохранены в FoxsMusic": [
+    "Track details saved in FoxsMusic",
+    "Titeldetails in FoxsMusic gespeichert"
+  ],
+  "Обложка обновлена": [
+    "Cover updated",
+    "Cover aktualisiert"
+  ],
+  "Выбери изображение для обложки.": [
+    "Choose an image for the cover.",
+    "Wähle ein Bild für das Cover aus."
+  ],
+  "Недавно воспроизведённые треки.": [
+    "Recently played tracks.",
+    "Zuletzt abgespielte Titel."
+  ],
+  "Недавно прослушано": [
+    "Recently played",
+    "Zuletzt abgespielt"
+  ],
+  "Последние 100 треков": [
+    "Your last 100 tracks",
+    "Deine letzten 100 Titel"
+  ],
+  "Временная библиотека — сохранение с ошибкой": [
+    "Temporary library — save error",
+    "Temporäre Bibliothek — Speicherfehler"
+  ],
+  "Папка исключена из проверки дубликатов.": [
+    "Folder excluded from duplicate checks.",
+    "Ordner von der Duplikatprüfung ausgeschlossen."
+  ],
+  "Сначала добавь хотя бы одну папку-источник.": [
+    "Add at least one source folder first.",
+    "Füge zuerst mindestens einen Quellordner hinzu."
+  ],
+  "Этот механизм недоступен в текущей сборке. Пересобери проект из обновлённого архива.": [
+    "This feature is unavailable in this build. Rebuild the project from the updated archive.",
+    "Diese Funktion ist in diesem Build nicht verfügbar. Erstelle den Build erneut aus dem aktualisierten Archiv."
+  ],
+  "Сканирую…": [
+    "Scanning…",
+    "Wird gescannt…"
+  ],
+  "Не удалось проверить папки-источники.": [
+    "Could not check source folders.",
+    "Quellordner konnten nicht geprüft werden."
+  ],
+  "Точных дубликатов аудиофайлов в папках-источниках не найдено.": [
+    "No exact audio file duplicates were found in the source folders.",
+    "In den Quellordnern wurden keine identischen Audiodateien gefunden."
+  ],
+  "Сканирование достигло лимита 10 000 аудиофайлов. Для полного результата проверь меньшие папки отдельно.": [
+    "The scan reached the 10,000-audio-file limit. Check smaller folders separately for a complete result.",
+    "Der Scan hat das Limit von 10.000 Audiodateien erreicht. Prüfe kleinere Ordner separat, um ein vollständiges Ergebnis zu erhalten."
+  ],
+  "Недоступные папки-источники (пропущены):": [
+    "Unavailable source folders (skipped):",
+    "Nicht verfügbare Quellordner (übersprungen):"
+  ],
+  "Дубликаты в папках-источниках": [
+    "Duplicates in source folders",
+    "Duplikate in Quellordnern"
+  ],
+  "Переместить дубликаты в корзину": [
+    "Move duplicates to trash",
+    "Duplikate in den Papierkorb verschieben"
+  ],
+  "Переместить дубликаты в корзину?": [
+    "Move duplicates to the recycle bin?",
+    "Duplikate in den Papierkorb verschieben?"
+  ],
+  "После подтверждения лишние побайтно одинаковые файлы из всех источников будут перемещены в системную корзину. В каждой группе останется один экземпляр. Файлы не удаляются безвозвратно.": [
+    "After confirmation, extra byte-identical files from all sources will be moved to the system recycle bin. One copy in each group will remain. Files are not permanently deleted.",
+    "Nach der Bestätigung werden zusätzliche byte-identische Dateien aus allen Quellen in den Papierkorb verschoben. Eine Kopie pro Gruppe bleibt erhalten. Die Dateien werden nicht endgültig gelöscht."
+  ],
+  "Файлы можно восстановить из системной корзины.": [
+    "Files can be restored from the system recycle bin.",
+    "Dateien können aus dem Papierkorb wiederhergestellt werden."
+  ],
+  "Создаю…": [
+    "Creating…",
+    "Wird erstellt…"
+  ],
+  "Резервная копия сохранена. Оригинальные аудиофайлы остались в своих папках.": [
+    "Backup saved. Original audio files remain in their folders.",
+    "Sicherung gespeichert. Die Originalaudiodateien bleiben in ihren Ordnern."
+  ],
+  "Не удалось создать резервную копию.": [
+    "Could not create the backup.",
+    "Die Sicherung konnte nicht erstellt werden."
+  ],
+  "Файл не является резервной копией FoxsMusic v1.": [
+    "This file is not a FoxsMusic v1 backup.",
+    "Diese Datei ist keine FoxsMusic-Sicherung Version 1."
+  ],
+  "Восстанавливаю…": [
+    "Restoring…",
+    "Wird wiederhergestellt…"
+  ],
+  "Восстановленный плейлист": [
+    "Restored playlist",
+    "Wiederhergestellte Wiedergabeliste"
+  ],
+  "Установлена последняя доступная версия.": [
+    "You have the latest available version.",
+    "Die neueste verfügbare Version ist installiert."
+  ],
+  "неизвестная ошибка": [
+    "unknown error",
+    "unbekannter Fehler"
+  ],
+  "Проверяю…": [
+    "Checking…",
+    "Wird geprüft…"
+  ],
+  "Не удалось проверить обновления.": [
+    "Could not check for updates.",
+    "Updates konnten nicht gesucht werden."
+  ],
+  "Доступна версия ": [
+    "Version available: ",
+    "Version verfügbar: "
+  ],
+  "Загрузка обновления: ": [
+    "Downloading update: ",
+    "Update wird heruntergeladen: "
+  ],
+  " готова к установке.": [
+    " is ready to install.",
+    " ist zur Installation bereit."
+  ],
+  "Ошибка обновления: ": [
+    "Update error: ",
+    "Updatefehler: "
+  ],
+  "Восстановлено записей: ": [
+    "Restored entries: ",
+    "Wiederhergestellte Einträge: "
+  ],
+  "Плейлистов ещё нет. Создай первый — и добавь сюда трек.": [
+    "There are no playlists yet. Create your first one and add this track.",
+    "Es gibt noch keine Wiedergabelisten. Erstelle deine erste und füge diesen Titel hinzu."
+  ],
+  "Добавлено": [
+    "Added",
+    "Hinzugefügt"
+  ],
+  "Добавить +": [
+    "Add +",
+    "Hinzufügen +"
+  ],
+  "Добавить в плейлист": [
+    "Add to playlist",
+    "Zur Wiedergabeliste hinzufügen"
+  ],
+  "Выбери подборку для «": [
+    "Choose a playlist for “",
+    "Wähle eine Wiedergabeliste für „"
+  ],
+  "».": [
+    "”.",
+    "“."
+  ],
+  "Новый плейлист": [
+    "New playlist",
+    "Neue Wiedergabeliste"
+  ],
+  "Дай подборке имя, которое подходит твоему настроению.": [
+    "Give this playlist a name that matches your mood.",
+    "Gib dieser Wiedergabeliste einen Namen, der zu deiner Stimmung passt."
+  ],
+  "Например, Midnight Drive": [
+    "For example, Midnight Drive",
+    "Zum Beispiel Midnight Drive"
+  ],
+  "Создать плейлист": [
+    "Create playlist",
+    "Wiedergabeliste erstellen"
+  ],
+  "Введи название плейлиста.": [
+    "Enter a playlist name.",
+    "Gib einen Namen für die Wiedergabeliste ein."
+  ],
+  "Плейлист с таким названием уже существует.": [
+    "A playlist with this name already exists.",
+    "Eine Wiedergabeliste mit diesem Namen existiert bereits."
+  ],
+  "Создан плейлист «": [
+    "Playlist created: “",
+    "Wiedergabeliste erstellt: „"
+  ],
+  "Удалить трек?": [
+    "Delete track?",
+    "Titel löschen?"
+  ],
+  "» будет удалён из локальной библиотеки приложения. Исходный файл на компьютере не удаляется.": [
+    "” will be removed from the app library. The original file on your computer will not be deleted.",
+    "“ wird aus der App-Bibliothek entfernt. Die Originaldatei auf deinem Computer bleibt erhalten."
+  ],
+  "Удалить трек": [
+    "Delete track",
+    "Titel löschen"
+  ],
+  "Сведения о треке": [
+    "Track details",
+    "Titeldetails"
+  ],
+  "Изменения сохраняются в FoxsMusic. Оригинальный аудиофайл и его теги на диске не изменяются.": [
+    "Changes are saved in FoxsMusic. The original audio file and its on-disk tags are not changed.",
+    "Änderungen werden in FoxsMusic gespeichert. Die Originalaudiodatei und ihre Tags auf dem Datenträger bleiben unverändert."
+  ],
+  "Название трека": [
+    "Track title",
+    "Titelname"
+  ],
+  "Настрой стиль, сезонный режим, основной цвет и градиент.": [
+    "Customize the style, seasonal mode, accent color and gradient.",
+    "Passe Stil, Saisonmodus, Akzentfarbe und Farbverlauf an."
+  ],
+  "Оформление профиля и цвет сброшены.": [
+    "Profile appearance and color have been reset.",
+    "Profilgestaltung und Farbe wurden zurückgesetzt."
+  ],
+  "Визуальные эффекты включены": [
+    "Visual effects enabled",
+    "Visuelle Effekte aktiviert"
+  ],
+  "Визуальные эффекты выключены": [
+    "Visual effects disabled",
+    "Visuelle Effekte deaktiviert"
+  ],
+  "0 треков": [
+    "0 tracks",
+    "0 Titel"
+  ],
+  "3 с": [
+    "3 s",
+    "3 Sek."
+  ],
+  "4 с": [
+    "4 s",
+    "4 Sek."
+  ],
+  "8 с": [
+    "8 s",
+    "8 Sek."
+  ],
+  "FoxsMusic — главная": [
+    "FoxsMusic — Home",
+    "FoxsMusic — Startseite"
+  ],
+  "Логотип DP — Desktop Player": [
+    "DP logo — Desktop Player",
+    "DP-Logo — Desktop Player"
+  ],
+  "Поиск музыки": [
+    "Search music",
+    "Musik suchen"
+  ],
+  "Поиск музыки, исполнителя...": [
+    "Search music, artist...",
+    "Musik, Interpret suchen..."
+  ],
+  "Сейчас играет": [
+    "Now playing",
+    "Läuft gerade"
+  ],
+  "Открыть экран Сейчас играет": [
+    "Open the Now Playing screen",
+    "Ansicht „Läuft gerade“ öffnen"
+  ],
+  "Полноэкранный режим": [
+    "Fullscreen mode",
+    "Vollbildmodus"
+  ],
+  "Подсказка": [
+    "Help",
+    "Hilfe"
+  ],
+  "Закрыть настройки": [
+    "Close settings",
+    "Einstellungen schließen"
+  ],
+  "Включить или выключить визуальные эффекты": [
+    "Toggle visual effects",
+    "Visuelle Effekte ein- oder ausschalten"
+  ],
+  "Разделы": [
+    "Sections",
+    "Bereiche"
+  ],
+  "Показать всю библиотеку": [
+    "Show the full library",
+    "Gesamte Bibliothek anzeigen"
+  ],
+  "Мои плейлисты": [
+    "My playlists",
+    "Meine Playlists"
+  ],
+  "Красно-чёрный логотип лиса FoxsMusic": [
+    "Red-and-black FoxsMusic fox logo",
+    "Rot-schwarzes FoxsMusic-Fuchslogo"
+  ],
+  "Открыть настройки звука": [
+    "Open audio settings",
+    "Audioeinstellungen öffnen"
+  ],
+  "Открыть звуковую студию": [
+    "Open Sound Studio",
+    "Soundstudio öffnen"
+  ],
+  "Закрыть звуковую студию": [
+    "Close Sound Studio",
+    "Soundstudio schließen"
+  ],
+  "Предустановки эквалайзера": [
+    "Equalizer presets",
+    "Equalizer-Voreinstellungen"
+  ],
+  "Уровень басов": [
+    "Bass level",
+    "Basspegel"
+  ],
+  "Уровень средних частот": [
+    "Midrange level",
+    "Mittenpegel"
+  ],
+  "Уровень высоких частот": [
+    "Treble level",
+    "Höhenpegel"
+  ],
+  "Длительность плавного перехода": [
+    "Crossfade duration",
+    "Überblenddauer"
+  ],
+  "В избранное": [
+    "Add to favorites",
+    "Zu Favoriten hinzufügen"
+  ],
+  "Перемешивание": [
+    "Shuffle",
+    "Zufallswiedergabe"
+  ],
+  "Повтор выключен": [
+    "Repeat off",
+    "Wiederholung aus"
+  ],
+  "Повтор": [
+    "Repeat",
+    "Wiederholen"
+  ],
+  "Позиция воспроизведения": [
+    "Playback position",
+    "Wiedergabeposition"
+  ],
+  "Без звука": [
+    "Mute",
+    "Stumm"
+  ],
+  "Громкость": [
+    "Volume",
+    "Lautstärke"
+  ],
+  "Настройки эффектов": [
+    "Effect settings",
+    "Effekteinstellungen"
+  ],
+  "Закрыть полноэкранный режим": [
+    "Exit fullscreen",
+    "Vollbildmodus beenden"
+  ],
+  "Обложка альбома": [
+    "Album artwork",
+    "Albumcover"
+  ],
+  "Удалить все треки из библиотеки?": [
+    "Remove all tracks from the library?",
+    "Alle Titel aus der Bibliothek entfernen?"
+  ],
+  "Из FoxsMusic будут удалены записи всех {count} треков. Оригинальные аудиофайлы на компьютере останутся нетронутыми. Продолжить?": [
+    "All {count} track entries will be removed from FoxsMusic. The original audio files on your computer will remain untouched. Continue?",
+    "Alle {count} Titeleinträge werden aus FoxsMusic entfernt. Die Originalaudiodateien auf deinem Computer bleiben unverändert. Fortfahren?"
+  ],
+  "Удалить все треки": [
+    "Remove all tracks",
+    "Alle Titel entfernen"
+  ],
+  "Импортированные треки удалены. Оригинальные файлы сохранены.": [
+    "Imported tracks removed. Original files were kept.",
+    "Importierte Titel entfernt. Originaldateien bleiben erhalten."
+  ],
+  "Библиотека уже пуста.": [
+    "The library is already empty.",
+    "Die Bibliothek ist bereits leer."
+  ],
+  "Папки-источники не добавлены. Выбери папки для проверки файловых дубликатов.": [
+    "No source folders have been added. Choose folders to check for duplicate files.",
+    "Es wurden keine Quellordner hinzugefügt. Wähle Ordner aus, um Dateiduplikate zu prüfen."
+  ],
+  "Текущий источник отображается в библиотеке": [
+    "Currently displayed library source",
+    "Aktuell angezeigte Bibliotheksquelle"
+  ],
+  "Убрать папку из проверки": [
+    "Remove folder from scan",
+    "Ordner aus der Prüfung entfernen"
+  ],
+  "Добавлено папок-источников: {count}.": [
+    "Source folders added: {count}.",
+    "Hinzugefügte Quellordner: {count}."
+  ],
+  "Проверка библиотеки": [
+    "Library audit",
+    "Bibliotheksprüfung"
+  ],
+  "Проверено записей: {total}. Оригиналы недоступны: {missing}. Групп точных дубликатов: {groups}. Лишних записей: {extras}.": [
+    "Entries checked: {total}. Originals unavailable: {missing}. Exact duplicate groups: {groups}. Extra entries: {extras}.",
+    "Geprüfte Einträge: {total}. Originale nicht verfügbar: {missing}. Gruppen exakter Duplikate: {groups}. Zusätzliche Einträge: {extras}."
+  ],
+  "Оригинальные файлы не найдены": [
+    "Original files not found",
+    "Originaldateien nicht gefunden"
+  ],
+  "Точные дубликаты": [
+    "Exact duplicates",
+    "Exakte Duplikate"
+  ],
+  "Недоступные оригиналы не найдены.": [
+    "No unavailable original files were found.",
+    "Keine fehlenden Originaldateien gefunden."
+  ],
+  "Точных дубликатов не найдено.": [
+    "No exact duplicates were found.",
+    "Keine exakten Duplikate gefunden."
+  ],
+  "Удалить лишние записи": [
+    "Remove extra entries",
+    "Zusätzliche Einträge entfernen"
+  ],
+  "Удалить дублирующие записи?": [
+    "Remove duplicate entries?",
+    "Doppelte Einträge entfernen?"
+  ],
+  "Будут удалены только повторные записи в библиотеке FoxsMusic. Оригинальные музыкальные файлы на диске останутся нетронутыми.": [
+    "Only duplicate entries in the FoxsMusic library will be removed. Original music files on disk will remain untouched.",
+    "Nur doppelte Einträge in der FoxsMusic-Bibliothek werden entfernt. Die Originalmusikdateien auf dem Laufwerk bleiben unverändert."
+  ],
+  "Дублирующие записи удалены. Оригинальные файлы сохранены.": [
+    "Duplicate entries removed. Original files were kept.",
+    "Doppelte Einträge entfernt. Originaldateien bleiben erhalten."
+  ],
+  "Не удалось проверить библиотеку. Попробуй ещё раз.": [
+    "Could not audit the library. Please try again.",
+    "Die Bibliothek konnte nicht geprüft werden. Bitte versuche es erneut."
+  ],
+  "ОРИГИНАЛ НЕ НАЙДЕН": [
+    "ORIGINAL NOT FOUND",
+    "ORIGINAL NICHT GEFUNDEN"
+  ],
+  "У записи нет доступного оригинального файла.": [
+    "No original file is available for this entry.",
+    "Für diesen Eintrag ist keine Originaldatei verfügbar."
+  ],
+  "В меню трека выбери «Найти оригинальный файл», чтобы восстановить ссылку.": [
+    "Open the track menu and choose “Locate original file” to restore the link.",
+    "Öffne das Titelmenü und wähle „Originaldatei suchen“, um die Verknüpfung wiederherzustellen."
+  ],
+  "Некоторые старые записи слишком велики для безопасной проверки содержимого; они не использовались для поиска дубликатов.": [
+    "Some older entries are too large for safe content checks and were skipped during duplicate detection.",
+    "Einige ältere Einträge sind für eine sichere Inhaltsprüfung zu groß und wurden bei der Duplikatsuche übersprungen."
+  ],
+  "Пропущено уже добавленных файлов: {count}.": [
+    "Already imported files skipped: {count}.",
+    "Bereits importierte Dateien übersprungen: {count}."
+  ],
+  "Оригинальный путь к файлу": [
+    "Original file path",
+    "Originaler Dateipfad"
+  ],
+  "Показать исходный файл в папке": [
+    "Show original file in folder",
+    "Originaldatei im Ordner anzeigen"
+  ],
+  "Найти оригинальный файл": [
+    "Locate original file",
+    "Originaldatei suchen"
+  ],
+  "У этой старой записи нет сохранённого исходного пути. Найди оригинал, чтобы использовать файл напрямую.": [
+    "This older entry has no saved source path. Locate the original file to use it directly.",
+    "Für diesen älteren Eintrag ist kein Quellpfad gespeichert. Suche die Originaldatei, um sie direkt zu verwenden."
+  ],
+  "Не удалось открыть расположение файла. Возможно, файл был перемещён или удалён.": [
+    "Could not open the file location. The file may have been moved or deleted.",
+    "Der Dateispeicherort konnte nicht geöffnet werden. Möglicherweise wurde die Datei verschoben oder gelöscht."
+  ],
+  "Оригинальный файл подключён": [
+    "Original file linked",
+    "Originaldatei verknüpft"
+  ],
+  "Папка библиотеки": [
+    "Library folder",
+    "Bibliotheksordner"
+  ],
+  "Показаны все треки библиотеки.": [
+    "All library tracks are displayed.",
+    "Alle Bibliothekstitel werden angezeigt."
+  ],
+  "Папка подключена как источник библиотеки.": [
+    "Folder connected as a library source.",
+    "Ordner als Bibliotheksquelle verbunden."
+  ],
+  "В выбранной папке аудиофайлы не найдены.": [
+    "No audio files were found in the selected folder.",
+    "Im ausgewählten Ordner wurden keine Audiodateien gefunden."
+  ],
+  "Не удалось прочитать папку-источник. Выбери папку заново.": [
+    "Could not read the source folder. Select the folder again.",
+    "Der Quellordner konnte nicht gelesen werden. Bitte wähle ihn erneut aus."
+  ],
+  "По названию": [
+    "By title",
+    "Nach Titel"
+  ],
+  "Любимые треки": [
+    "Favorite tracks",
+    "Lieblingstitel"
+  ],
+  "Твоя личная подборка": [
+    "Your personal collection",
+    "Deine persönliche Sammlung"
+  ],
+  "Треки плейлиста": [
+    "Playlist tracks",
+    "Playlist-Titel"
+  ],
+  "Музыка в плейлистах": [
+    "Music in playlists",
+    "Musik in Playlists"
+  ],
+  "Твои подборки на этом устройстве": [
+    "Your collections on this device",
+    "Deine Sammlungen auf diesem Gerät"
+  ],
+  "Результаты": [
+    "Results",
+    "Ergebnisse"
+  ],
+  "Поиск по запросу": [
+    "Search results for",
+    "Suchergebnisse für"
+  ],
+  "Найденные треки": [
+    "Matching tracks",
+    "Gefundene Titel"
+  ],
+  "Совпадений": [
+    "Matches",
+    "Treffer"
+  ],
+  "Ничего не найдено": [
+    "Nothing found",
+    "Nichts gefunden"
+  ],
+  "Действия с треком": [
+    "Track actions",
+    "Titelaktionen"
+  ],
+  "»": [
+    "”",
+    "“"
+  ],
+  " применён": [
+    " applied",
+    " angewendet"
+  ],
+  " удалён": [
+    " deleted",
+    " gelöscht"
+  ],
+  " сохранён": [
+    " saved",
+    " gespeichert"
+  ],
+  "Доступна версия": [
+    "Version available",
+    "Version verfügbar"
+  ],
+  "Загрузка обновления:": [
+    "Downloading update:",
+    "Update wird heruntergeladen:"
+  ],
+  "готова к установке.": [
+    "is ready to install.",
+    "ist zur Installation bereit."
+  ],
+  "Ошибка обновления:": [
+    "Update error:",
+    "Update-Fehler:"
+  ],
+  "Восстановлено записей:": [
+    "Entries restored:",
+    "Wiederhergestellte Einträge:"
+  ],
+  "Не удалось восстановить копию:": [
+    "Could not restore the backup:",
+    "Sicherung konnte nicht wiederhergestellt werden:"
+  ],
+  "Файл резервной копии не удалось прочитать:": [
+    "Could not read the backup file:",
+    "Sicherungsdatei konnte nicht gelesen werden:"
+  ],
+  "Перезапусти плеер, чтобы применить все сохранённые настройки.": [
+    "Restart the player to apply all restored settings.",
+    "Starte den Player neu, um alle wiederhergestellten Einstellungen anzuwenden."
+  ],
+  "Не удалось воспроизвести этот трек.": [
+    "Could not play this track.",
+    "Dieser Titel konnte nicht abgespielt werden."
+  ],
+  "LIVE · АНАЛИЗ": [
+    "LIVE · ANALYSIS",
+    "LIVE · ANALYSE"
+  ],
+  "СЕЙЧАС ИГРАЕТ": [
+    "NOW PLAYING",
+    "LÄUFT GERADE"
+  ],
+  "ПАУЗА": [
+    "PAUSED",
+    "PAUSE"
+  ],
+  "Пауза": [
+    "Pause",
+    "Pause"
+  ],
+  "Удалить из избранного": [
+    "Remove from favorites",
+    "Aus Favoriten entfernen"
+  ],
+  "Включить звук": [
+    "Unmute",
+    "Ton einschalten"
+  ],
+  "Выключить перемешивание": [
+    "Turn shuffle off",
+    "Zufallswiedergabe ausschalten"
+  ],
+  "Включить перемешивание": [
+    "Turn shuffle on",
+    "Zufallswiedergabe einschalten"
+  ],
+  "Повтор всего плейлиста": [
+    "Repeat entire playlist",
+    "Ganze Playlist wiederholen"
+  ],
+  "Повтор одного трека": [
+    "Repeat one track",
+    "Einen Titel wiederholen"
+  ],
+  "Нажми +, чтобы создать свою подборку.": [
+    "Press + to create your own playlist.",
+    "Drücke +, um deine eigene Playlist zu erstellen."
+  ],
+  "Анимации включены": [
+    "Animations enabled",
+    "Animationen aktiviert"
+  ],
+  "Анимации выключены": [
+    "Animations disabled",
+    "Animationen deaktiviert"
+  ],
+  "FoxsMusic · Быстрые клавиши": [
+    "FoxsMusic · Keyboard shortcuts",
+    "FoxsMusic · Tastenkürzel"
+  ],
+  "Управляй музыкой с клавиатуры. На мобильных устройствах используй кнопки плеера.": [
+    "Control music with your keyboard. On mobile devices, use the player buttons.",
+    "Steuere die Musik mit der Tastatur. Auf Mobilgeräten kannst du die Player-Tasten verwenden."
+  ],
+  "Воспроизведение / пауза": [
+    "Play / pause",
+    "Wiedergabe / Pause"
+  ],
+  "Перемотка на 5 секунд": [
+    "Seek by 5 seconds",
+    "Um 5 Sekunden springen"
+  ],
+  "Громкость ±5%": [
+    "Volume ±5%",
+    "Lautstärke ±5 %"
+  ],
+  "Включить / выключить звук": [
+    "Toggle sound",
+    "Ton ein- oder ausschalten"
+  ],
+  "Следующий / предыдущий трек": [
+    "Next / previous track",
+    "Nächster / vorheriger Titel"
+  ],
+  "Перемешивание вкл. / выкл.": [
+    "Toggle shuffle",
+    "Zufallswiedergabe umschalten"
+  ],
+  "Переключить режим повтора": [
+    "Cycle repeat mode",
+    "Wiederholmodus wechseln"
+  ],
+  "Включить / выключить полный экран": [
+    "Toggle fullscreen",
+    "Vollbild umschalten"
+  ],
+  "Открыть / закрыть звуковую студию": [
+    "Open / close Sound Studio",
+    "Soundstudio öffnen / schließen"
+  ],
+  "Закрыть открытое окно или панель": [
+    "Close the open dialog or panel",
+    "Den geöffneten Dialog oder Bereich schließen"
+  ],
+  "Понятно": [
+    "Got it",
+    "Verstanden"
+  ],
+  "Все плейлисты": [
+    "All playlists",
+    "Alle Playlists"
+  ],
+  "Плейлист": [
+    "Playlist",
+    "Playlist"
+  ],
+  "Это не поддерживаемый аудиофайл": [
+    "This audio file type is not supported.",
+    "Dieser Audiodateityp wird nicht unterstützt."
+  ],
+  "Файл не найден": [
+    "File not found.",
+    "Datei nicht gefunden."
+  ],
+  "Недопустимый путь к папке музыкальной библиотеки": [
+    "Invalid music library folder path.",
+    "Ungültiger Pfad zum Musikbibliotheksordner."
+  ],
+  "Выбранный источник не является папкой": [
+    "The selected source is not a folder.",
+    "Die ausgewählte Quelle ist kein Ordner."
+  ],
+  "Некорректный список библиотеки": [
+    "Invalid library file list.",
+    "Ungültige Dateiliste der Bibliothek."
+  ],
+  "Нужно указать от одной до 100 папок-источников": [
+    "Specify between one and 100 source folders.",
+    "Gib zwischen einem und 100 Quellordner an."
+  ],
+  "Недопустимый путь к папке-источнику": [
+    "Invalid source folder path.",
+    "Ungültiger Pfad zum Quellordner."
+  ],
+  "Некорректный список папок-источников": [
+    "Invalid source folder list.",
+    "Ungültige Liste der Quellordner."
+  ],
+  "Некорректный запрос удаления дубликатов": [
+    "Invalid duplicate-removal request.",
+    "Ungültige Anfrage zum Entfernen von Duplikaten."
+  ],
+  "Ни одна папка-источник сейчас недоступна": [
+    "None of the source folders is currently available.",
+    "Keiner der Quellordner ist derzeit verfügbar."
+  ],
+  "Резервная копия слишком большая или некорректная": [
+    "The backup is too large or invalid.",
+    "Die Sicherung ist zu groß oder ungültig."
+  ],
+  "Файл резервной копии превышает 60 МБ": [
+    "The backup file exceeds 60 MB.",
+    "Die Sicherungsdatei ist größer als 60 MB."
+  ],
+  "Проверка обновлений доступна в собранном приложении.": [
+    "Update checks are available in the packaged app.",
+    "Die Updateprüfung ist in der installierten App verfügbar."
+  ],
+  "Сначала собери приложение.": [
+    "Build the app first.",
+    "Erstelle zuerst die App."
+  ],
+  "Отпусти, чтобы добавить музыку": [
+    "Release to add music",
+    "Loslassen, um Musik hinzuzufügen"
+  ]
+}).map(([source, values]) => [
+    source.replace(/\s+/g, ' ').trim().toLocaleLowerCase('ru-RU'),
+    { source, en: values[0], de: values[1] }
+  ]));
+  // Reuse the canonical translations too, so dynamic text can be translated even when
+  // it was originally rendered through a direct textContent assignment.
+  for (const key of Object.keys(LANGUAGES.ru || {})) {
+    const source = LANGUAGES.ru[key];
+    const en = LANGUAGES.en?.[key];
+    const de = LANGUAGES.de?.[key];
+    if (typeof source === 'string' && /[\u0400-\u04FF]/.test(source) && typeof en === 'string' && typeof de === 'string') {
+      INLINE_TRANSLATIONS.set(normalizedInlineKey(source), { source, en, de });
+    }
+  }
+  const LOCALE_ATTRIBUTES = ['title', 'aria-label', 'placeholder', 'alt'];
+  const STATIC_LOCALE_TEXT_NODES = [];
+  const STATIC_LOCALE_ATTRIBUTES = [];
+  const STATIC_LOCALE_TEXT_INDEX = new WeakMap();
+  const STATIC_LOCALE_ATTRIBUTE_INDEX = new WeakMap();
+  const INLINE_TRANSLATION_ENTRIES = [...INLINE_TRANSLATIONS.values()].sort((a, b) => b.source.length - a.source.length);
+  const LOCALE_USER_CONTENT_SELECTOR = [
+    'script', 'style', 'svg', 'code', 'pre', 'input', 'textarea', 'select', '[data-no-i18n]',
+    '.track-row', '.queue-row', '.playlist-link', '.custom-studio-preset',
+    '#nowTitle', '#nowArtist', '#nowPlayingTitle', '#nowPlayingArtist', '#viewTitle', '#viewSubtitle', '#queueContextLabel'
+  ].join(',');
+
+  function normalizedInlineKey(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('ru-RU');
+  }
+  function translationCase(match, translated) {
+    const localeTag = currentLocale === 'de' ? 'de-DE' : 'en-US';
+    if (/[А-ЯЁ]/.test(match) && match === match.toLocaleUpperCase('ru-RU')) return translated.toLocaleUpperCase(localeTag);
+    if (/[А-ЯЁ]/.test(match[0] || '') && match[0] === match[0].toLocaleUpperCase('ru-RU')) {
+      return translated ? translated[0].toLocaleUpperCase(localeTag) + translated.slice(1) : translated;
+    }
+    return translated;
+  }
+  function translateInlineText(value) {
+    if (typeof value !== 'string' || currentLocale === 'ru' || !value) return value;
+    const leading = value.match(/^\s*/)?.[0] || '';
+    const trailing = value.match(/\s*$/)?.[0] || '';
+    const core = value.slice(leading.length, value.length - trailing.length || undefined);
+    const translated = INLINE_TRANSLATIONS.get(normalizedInlineKey(core))?.[currentLocale];
+    if (!translated) return value;
+    return leading + translationCase(core, translated) + trailing;
+  }
+  function escapeRegExp(value) {
+    return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+  function translateInlineSegments(value) {
+    if (typeof value !== 'string' || currentLocale === 'ru' || !value) return value;
+    const exact = translateInlineText(value);
+    if (exact !== value) return exact;
+    let output = value;
+    for (const entry of INLINE_TRANSLATION_ENTRIES) {
+      const translated = entry[currentLocale];
+      if (!translated || entry.source.length < 3) continue;
+      const pattern = new RegExp(escapeRegExp(entry.source), 'giu');
+      output = output.replace(pattern, match => translationCase(match, translated));
+    }
+    return output;
+  }
+  function shouldSkipLocaleText(node) {
+    return !node?.parentElement || Boolean(node.parentElement.closest(LOCALE_USER_CONTENT_SELECTOR));
+  }
+  function rememberLocaleTextNode(node) {
+    if (!node || node.nodeType !== Node.TEXT_NODE || shouldSkipLocaleText(node)) return null;
+    const original = node.nodeValue || '';
+    if (!/[\u0400-\u04FF]/.test(original)) return null;
+    let item = STATIC_LOCALE_TEXT_INDEX.get(node);
+    if (!item) {
+      item = { node, original };
+      STATIC_LOCALE_TEXT_INDEX.set(node, item);
+      STATIC_LOCALE_TEXT_NODES.push(item);
+    } else if (item.original !== original) {
+      // App-generated Russian UI text may replace a previously translated node.
+      item.original = original;
+    }
+    return item;
+  }
+  function shouldSkipLocaleAttribute(element, attribute) {
+    if (!element || element.closest('script, style, svg, code, pre, [data-no-i18n]')) return true;
+    if (attribute === 'title' && element.matches('.row-title, .queue-title')) return true;
+    return false;
+  }
+  function rememberLocaleAttribute(element, attribute) {
+    if (shouldSkipLocaleAttribute(element, attribute)) return null;
+    const original = element.getAttribute(attribute);
+    if (!original || !/[\u0400-\u04FF]/.test(original)) return null;
+    let perElement = STATIC_LOCALE_ATTRIBUTE_INDEX.get(element);
+    if (!perElement) {
+      perElement = new Map();
+      STATIC_LOCALE_ATTRIBUTE_INDEX.set(element, perElement);
+    }
+    let item = perElement.get(attribute);
+    if (!item) {
+      item = { element, attribute, original };
+      perElement.set(attribute, item);
+      STATIC_LOCALE_ATTRIBUTES.push(item);
+    } else if (item.original !== original) {
+      item.original = original;
+    }
+    return item;
+  }
+  function applyLocaleTextItem(item) {
+    if (!item?.node?.isConnected) return;
+    const value = currentLocale === 'ru' ? item.original : translateInlineSegments(item.original);
+    if (item.node.nodeValue !== value) item.node.nodeValue = value;
+  }
+  function applyLocaleAttributeItem(item) {
+    if (!item?.element?.isConnected) return;
+    const value = currentLocale === 'ru' ? item.original : translateInlineSegments(item.original);
+    if (item.element.getAttribute(item.attribute) !== value) item.element.setAttribute(item.attribute, value);
+  }
+  function captureStaticLocaleSubtree(root) {
+    if (!root) return;
+    const textItems = [];
+    const attributeItems = [];
+    if (root.nodeType === Node.TEXT_NODE) {
+      const item = rememberLocaleTextNode(root);
+      if (item) textItems.push(item);
+    } else if (root.nodeType === Node.ELEMENT_NODE || root.nodeType === Node.DOCUMENT_FRAGMENT_NODE || root.nodeType === Node.DOCUMENT_NODE) {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        const item = rememberLocaleTextNode(node);
+        if (item) textItems.push(item);
+      }
+      const elements = [];
+      if (root.nodeType === Node.ELEMENT_NODE) elements.push(root);
+      if (typeof root.querySelectorAll === 'function') elements.push(...root.querySelectorAll('*'));
+      for (const element of elements) {
+        for (const attribute of LOCALE_ATTRIBUTES) {
+          const item = rememberLocaleAttribute(element, attribute);
+          if (item) attributeItems.push(item);
+        }
+      }
+    }
+    for (const item of textItems) applyLocaleTextItem(item);
+    for (const item of attributeItems) applyLocaleAttributeItem(item);
+  }
+  function captureStaticLocaleContent() {
+    if (document.body) captureStaticLocaleSubtree(document.body);
+  }
+  function applyStaticLocale() {
+    for (const item of STATIC_LOCALE_TEXT_NODES) applyLocaleTextItem(item);
+    for (const item of STATIC_LOCALE_ATTRIBUTES) applyLocaleAttributeItem(item);
+  }
+  function observeDynamicLocaleContent() {
+    if (!document.body || typeof MutationObserver === 'undefined') return;
+    const observer = new MutationObserver(records => {
+      for (const record of records) {
+        if (record.type === 'childList') {
+          record.addedNodes.forEach(node => captureStaticLocaleSubtree(node));
+        } else if (record.type === 'characterData') {
+          const item = rememberLocaleTextNode(record.target);
+          if (item) applyLocaleTextItem(item);
+        } else if (record.type === 'attributes' && LOCALE_ATTRIBUTES.includes(record.attributeName)) {
+          const item = rememberLocaleAttribute(record.target, record.attributeName);
+          if (item) applyLocaleAttributeItem(item);
+        }
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: LOCALE_ATTRIBUTES });
+  }
+  function crossfadeSecondsLabel(value) {
+    const number = Number(value);
+    const formatted = currentLocale === 'de' ? String(number).replace('.', ',') : String(number);
+    const unit = currentLocale === 'ru' ? 'с' : currentLocale === 'de' ? 'Sek.' : 's';
+    return `${formatted} ${unit}`;
+  }
+  captureStaticLocaleContent();
+  observeDynamicLocaleContent();
   function translateArtist(artist) {
     if (artist === 'Локальная библиотека') return tr('localLibrary');
     if (artist === 'Неизвестный исполнитель') return tr('unknownArtist');
@@ -242,7 +1915,10 @@
   function setText(selector, value) { const element = $(selector); if (element) element.textContent = value; }
   function applyLocale(locale = currentLocale) {
     currentLocale = ['ru', 'en', 'de'].includes(locale) ? locale : 'ru';
+    captureStaticLocaleContent();
+    applyStaticLocale();
     document.documentElement.lang = currentLocale;
+    document.body.dataset.dropHint = translateInlineText('Отпусти, чтобы добавить музыку');
     const settingsSelect = $('#languageSelect'); if (settingsSelect && settingsSelect.value !== currentLocale) settingsSelect.value = currentLocale;
     setText('.sidebar-label', tr('library'));
     setText('.nav-item[data-view="all"] span:nth-child(2)', tr('myMusic'));
@@ -265,7 +1941,7 @@
     renderLibrarySourcesList();
     setText('#sloganText', tr('slogan'));
     setText('#heroAddText', tr('uploadMusic'));
-    const heroSound = $('#heroSoundBtn'); if (heroSound) heroSound.innerHTML = `<span class="chip-dot"></span> SOUND ON <span class="chip-eq-mini" aria-hidden="true"><i></i><i></i><i></i></span>`;
+    const heroSound = $('#heroSoundBtn'); if (heroSound) heroSound.innerHTML = `<span class="chip-dot"></span> ${{ru:'ЗВУК ВКЛ',en:'SOUND ON',de:'TON AN'}[currentLocale]} <span class="chip-eq-mini" aria-hidden="true"><i></i><i></i><i></i></span>`;
     if (ui.search) { ui.search.placeholder = tr('searchPlaceholder'); ui.search.setAttribute('aria-label', tr('searchPlaceholder')); }
     setText('.table-head .col-title', tr('columnName'));
     setText('.table-head .col-album', tr('added'));
@@ -358,16 +2034,20 @@
     if (ui.repeatBtn) { ui.repeatBtn.title = repeatLabel; ui.repeatBtn.setAttribute('aria-label', repeatLabel); }
     setText('#audioEngineStatus', ui.audio && !ui.audio.paused && analyserNode ? tr('live') : tr('ready'));
     const emptyHeading = $('.empty-state h3');
-    if (emptyHeading && ui.emptyState?.classList.contains('show')) emptyHeading.textContent = getSourceTracks().length ? tr('emptyNoResults') : tr('emptyTitle');
+    const hasSourceTracks = getSourceTracks().length > 0;
+    const emptySelectedFolder = !!activeLibraryFolderPath && !hasSourceTracks;
+    if (emptyHeading && ui.emptyState?.classList.contains('show')) emptyHeading.textContent = emptySelectedFolder ? translateInlineText('В выбранной папке пока нет музыки') : hasSourceTracks ? tr('emptyNoResults') : tr('emptyTitle');
     const emptyP = $('.empty-state p');
-    if (emptyP && ui.emptyState?.classList.contains('show')) emptyP.innerHTML = getSourceTracks().length ? tr('emptySearchText') : tr('emptyText');
+    if (emptyP && ui.emptyState?.classList.contains('show')) emptyP.innerHTML = emptySelectedFolder ? translateInlineText('Добавь аудиофайлы в выбранную папку или выбери другой музыкальный каталог.') : hasSourceTracks ? tr('emptySearchText') : tr('emptyText');
     const emptyBtn = $('#emptyAddBtn');
     if (emptyBtn && ui.emptyState?.classList.contains('show')) {
       const hasTracks = getSourceTracks().length > 0;
       const emptySelectedFolder = !!activeLibraryFolderPath && !hasTracks;
-      emptyBtn.innerHTML = emptySelectedFolder ? `${svgIcon('folder')} ${tr('importFolder')}` : hasTracks ? `${svgIcon('x')} ${tr('clearSearch')}` : `${svgIcon('plus')} ${tr('chooseAudio')}`;
+      emptyBtn.innerHTML = emptySelectedFolder ? `${svgIcon('folder')} ${translateInlineText('Выбрать другую папку')}` : hasTracks ? `${svgIcon('x')} ${tr('clearSearch')}` : `${svgIcon('plus')} ${tr('chooseAudio')}`;
       emptyBtn.dataset.mode = emptySelectedFolder ? 'folder' : hasTracks ? 'clear' : 'add';
     }
+    // Rebuild saved preset controls so their tooltips and accessible labels follow the selected language.
+    renderCustomEqPresets();
   }
   function newId() {
     return typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `fx-${Date.now()}-${Math.random().toString(16).slice(2)}`;
@@ -542,6 +2222,7 @@
   }
 
   function toast(message, type = '') {
+    message = translateInlineSegments(String(message ?? ''));
     const node = document.createElement('div');
     node.className = `toast ${type}`.trim();
     node.textContent = message;
@@ -555,6 +2236,7 @@
   }
   function openModal(markup, focusSelector = null) {
     ui.modalRoot.innerHTML = `<div class="modal-backdrop" data-modal-backdrop><section class="modal-card" role="dialog" aria-modal="true">${markup}</section></div>`;
+    captureStaticLocaleSubtree(ui.modalRoot);
     const backdrop = $('[data-modal-backdrop]', ui.modalRoot);
     backdrop.addEventListener('click', event => { if (event.target === backdrop) closeModal(); });
     $$('[data-close-modal]', ui.modalRoot).forEach(button => button.addEventListener('click', closeModal));
@@ -624,7 +2306,7 @@
     const button = $('#manageLibrarySourcesBtn');
     if (button) button.disabled = true;
     try {
-      const result = await window.foxsmusic.selectSourceFolders();
+      const result = await window.foxsmusic.selectSourceFolders(currentLocale);
       if (!result || result.canceled) return;
       const added = addConfiguredSourcePaths(result.folderPaths || []);
       persistSettings(); renderLibrarySourcesList();
@@ -780,10 +2462,10 @@
       ui.listHeading.textContent = activePlaylistId ? tr('playlistTracks') : tr('playlistsMusic');
       ui.listSubheading.textContent = tr('playlistSub');
     } else if (activeView === 'history') {
-      ui.viewTitle.innerHTML = `${currentLocale === 'en' ? 'History' : currentLocale === 'de' ? 'Verlauf' : 'История'}<span class="title-period">.</span>`;
-      ui.viewSubtitle.textContent = currentLocale === 'en' ? 'Recently played tracks.' : currentLocale === 'de' ? 'Zuletzt abgespielte Titel.' : 'Недавно воспроизведённые треки.';
-      ui.listHeading.textContent = currentLocale === 'en' ? 'Recently played' : currentLocale === 'de' ? 'Zuletzt abgespielt' : 'Недавно прослушано';
-      ui.listSubheading.textContent = currentLocale === 'en' ? 'Your last 100 tracks' : currentLocale === 'de' ? 'Deine letzten 100 Titel' : 'Последние 100 треков';
+      ui.viewTitle.innerHTML = `${translateInlineText('История')}<span class="title-period">.</span>`;
+      ui.viewSubtitle.textContent = translateInlineText('Недавно воспроизведённые треки.');
+      ui.listHeading.textContent = translateInlineText('Недавно прослушано');
+      ui.listSubheading.textContent = translateInlineText('Последние 100 треков');
     } else {
       ui.viewTitle.innerHTML = `${tr('viewTitle')}<span class="title-period">.</span>`;
       ui.viewSubtitle.textContent = tr('viewSubtitle');
@@ -794,7 +2476,7 @@
     ui.libraryCount.textContent = String(getSourceTracks().length);
     const historyCount = $('#historyCount'); if (historyCount) historyCount.textContent = String(playbackHistory.length);
     ui.queueCount.textContent = wordTracks(getPlaybackQueue().length);
-    ui.queueContextLabel.textContent = activeView === 'history' ? (currentLocale === 'en' ? 'History' : currentLocale === 'de' ? 'Verlauf' : 'История') : playlistName;
+    ui.queueContextLabel.textContent = activeView === 'history' ? translateInlineText('История') : playlistName;
     const sortLabel = $('#sortBtn span:last-child'); if (sortLabel) sortLabel.textContent = sortMode === 'recent' ? tr('recentlyAdded') : tr('sortByTitle');
     const queueHeading = $('#queueHeadingText'); if (queueHeading) queueHeading.textContent = tr('queueTitle');
   }
@@ -860,13 +2542,11 @@
       ui.emptyState.classList.add('show');
       const hasTracks = getSourceTracks().length > 0;
       const emptySelectedFolder = !!activeLibraryFolderPath && !hasTracks;
-      $('.empty-state h3').textContent = emptySelectedFolder ? 'В выбранной папке пока нет музыки' : hasTracks ? 'Ничего не найдено' : 'Твоя музыка начинается здесь';
+      $('.empty-state h3').textContent = emptySelectedFolder ? translateInlineText('В выбранной папке пока нет музыки') : hasTracks ? tr('emptyNoResults') : tr('emptyTitle');
       $('.empty-state p').innerHTML = emptySelectedFolder
-        ? 'Добавь аудиофайлы в выбранную папку или выбери другой музыкальный каталог.'
-        : hasTracks
-          ? 'В этом разделе пока нет подходящих треков.<br>Смени поиск или добавь музыку в избранное / плейлист.'
-          : 'Добавь MP3, WAV, FLAC, OGG или другой аудиофайл.<br>Треки останутся в библиотеке на этом устройстве.';
-      $('#emptyAddBtn').innerHTML = emptySelectedFolder ? `${svgIcon('folder')} Выбрать другую папку` : hasTracks ? `${svgIcon('x')} Очистить поиск` : `${svgIcon('plus')} Выбрать аудиофайлы`;
+        ? translateInlineText('Добавь аудиофайлы в выбранную папку или выбери другой музыкальный каталог.')
+        : hasTracks ? tr('emptySearchText') : tr('emptyText');
+      $('#emptyAddBtn').innerHTML = emptySelectedFolder ? `${svgIcon('folder')} ${translateInlineText('Выбрать другую папку')}` : hasTracks ? `${svgIcon('x')} ${tr('clearSearch')}` : `${svgIcon('plus')} ${tr('chooseAudio')}`;
       $('#emptyAddBtn').dataset.mode = emptySelectedFolder ? 'folder' : hasTracks ? 'clear' : 'add';
       return;
     }
@@ -879,7 +2559,7 @@
       row.style.animationDelay = `${Math.min(index, 12) * 18}ms`;
       row.innerHTML = `
         <span class="row-number" data-number="${String(index + 1).padStart(2, '0')}" data-mode="${current && !ui.audio.paused ? 'playing' : 'number'}">${current && !ui.audio.paused ? miniEqualizerMarkup() : String(index + 1).padStart(2, '0')}</span>
-        <div class="row-title-wrap"><img class="row-cover" data-track-artwork="${escapeHTML(track.id)}" src="${escapeHTML(coverFor(track))}" alt="Обложка" loading="lazy"><div class="row-title-stack"><span class="row-title" title="${escapeHTML(track.title)}">${escapeHTML(track.title)}</span><span class="row-artist">${escapeHTML(translateArtist(track.artist || 'Неизвестный исполнитель'))}${track.album ? ` · ${escapeHTML(track.album)}` : ''}${track.favorite ? ' · ♥' : ''}${track.sourceUnavailable ? ` · ${escapeHTML(tr('missingFile'))}` : ''}</span></div></div>
+        <div class="row-title-wrap"><img class="row-cover" data-track-artwork="${escapeHTML(track.id)}" src="${escapeHTML(coverFor(track))}" alt="${escapeHTML(translateInlineText('Обложка'))}" loading="lazy"><div class="row-title-stack"><span class="row-title" title="${escapeHTML(track.title)}">${escapeHTML(track.title)}</span><span class="row-artist">${escapeHTML(translateArtist(track.artist || 'Неизвестный исполнитель'))}${track.album ? ` · ${escapeHTML(track.album)}` : ''}${track.favorite ? ' · ♥' : ''}${track.sourceUnavailable ? ` · ${escapeHTML(tr('missingFile'))}` : ''}</span></div></div>
         <span class="row-added">${new Date(track.addedAt).toLocaleDateString(({ru:'ru-RU', en:'en-US', de:'de-DE'})[currentLocale], {day:'2-digit', month:'short'})}</span>
         <span class="row-duration">${track.duration ? formatTime(track.duration) : '—:—'}</span>
         <button class="row-action" data-action="menu" aria-label="${tr('trackActions')}" title="${tr('trackActions')}">${svgIcon('dots')}</button>`;
@@ -905,8 +2585,8 @@
       row.dataset.trackId = track.id; row.draggable = true;
       row.style.animationDelay = `${Math.min(index, 10) * 18}ms`;
       const queueNumber = track.id === currentTrackId && !ui.audio.paused ? miniEqualizerMarkup() : String(index + 1);
-      const removeQueueLabel = currentLocale === 'en' ? 'Remove from queue' : currentLocale === 'de' ? 'Aus Warteschlange entfernen' : 'Убрать из очереди';
-      row.innerHTML = `<span class="queue-number" data-number="${index + 1}" data-mode="${track.id === currentTrackId && !ui.audio.paused ? 'playing' : 'number'}">${queueNumber}</span><img class="queue-cover" data-track-artwork="${escapeHTML(track.id)}" src="${escapeHTML(coverFor(track))}" alt="Обложка" loading="lazy"><span class="queue-text"><span class="queue-title" title="${escapeHTML(track.title)}">${escapeHTML(track.title)}</span><span class="queue-artist">${escapeHTML(translateArtist(track.artist || 'Неизвестный исполнитель'))}</span></span><span class="queue-duration">${track.duration ? formatTime(track.duration) : '—:—'}</span><button class="queue-remove" type="button" data-remove-queue="${escapeHTML(track.id)}" title="${escapeHTML(removeQueueLabel)}" aria-label="${escapeHTML(removeQueueLabel)}"><span aria-hidden="true">×</span></button>`;
+      const removeQueueLabel = translateInlineText('Убрать из очереди');
+      row.innerHTML = `<span class="queue-number" data-number="${index + 1}" data-mode="${track.id === currentTrackId && !ui.audio.paused ? 'playing' : 'number'}">${queueNumber}</span><img class="queue-cover" data-track-artwork="${escapeHTML(track.id)}" src="${escapeHTML(coverFor(track))}" alt="${escapeHTML(translateInlineText('Обложка'))}" loading="lazy"><span class="queue-text"><span class="queue-title" title="${escapeHTML(track.title)}">${escapeHTML(track.title)}</span><span class="queue-artist">${escapeHTML(translateArtist(track.artist || 'Неизвестный исполнитель'))}</span></span><span class="queue-duration">${track.duration ? formatTime(track.duration) : '—:—'}</span><button class="queue-remove" type="button" data-remove-queue="${escapeHTML(track.id)}" title="${escapeHTML(removeQueueLabel)}" aria-label="${escapeHTML(removeQueueLabel)}"><span aria-hidden="true">×</span></button>`;
       row.addEventListener('click', event => { if (event.target.closest('[data-remove-queue]')) return; if (event.dataTransfer) return; playTrack(track.id); });
       row.addEventListener('dragstart', event => { queueDragTrackId = track.id; event.dataTransfer?.setData('text/plain', track.id); event.dataTransfer.effectAllowed = 'move'; row.classList.add('queue-dragging'); });
       row.addEventListener('dragend', () => { queueDragTrackId = null; row.classList.remove('queue-dragging'); });
@@ -986,7 +2666,7 @@
     if (!track) {
       ui.nowCover.removeAttribute('data-track-artwork'); ui.nowCover.src = LOGO; ui.nowTitle.textContent = 'FoxsMusic'; ui.nowArtist.textContent = tr('playerChoose');
       ui.nowStatus.textContent = tr('readyStatus'); ui.nowFavoriteBtn.classList.remove('active');
-      ui.nowFavoriteBtn.title = tr('favoriteAdd'); ui.playBtn.innerHTML = svgIcon('play'); ui.playBtn.setAttribute('aria-label', 'Воспроизвести');
+      ui.nowFavoriteBtn.title = tr('favoriteAdd'); ui.playBtn.innerHTML = svgIcon('play'); ui.playBtn.setAttribute('aria-label', tr('play'));
       ui.durationText.textContent = '0:00'; ui.currentTime.textContent = '0:00'; ui.seekBar.value = 0; setRangeFill(ui.seekBar);
       document.body.classList.remove('is-playing'); $('#heroEqualizer').classList.add('paused');
       return;
@@ -1176,7 +2856,7 @@
   async function chooseAudioFiles(allowMultiple = true) {
     if (!window.foxsmusic?.selectAudioFiles) { ui.audioInput.click(); return; }
     try {
-      const records = await window.foxsmusic.selectAudioFiles(allowMultiple);
+      const records = await window.foxsmusic.selectAudioFiles(allowMultiple, currentLocale);
       if (records.length) await importAudioRecords(records);
     } catch (error) {
       console.error('FoxsMusic file dialog error', error);
@@ -1279,7 +2959,7 @@
   async function chooseAudioFolder() {
     if (!window.foxsmusic?.selectAudioFolder) { ui.folderInput.click(); return; }
     try {
-      const result = await window.foxsmusic.selectAudioFolder();
+      const result = await window.foxsmusic.selectAudioFolder(currentLocale);
       if (!result || result.canceled || !result.folderPath) return;
       await activateLibraryFolder(result.folderPath, result.records || [], { notify: true });
     } catch (error) {
@@ -1305,7 +2985,7 @@
     const track = getTrack(trackId);
     if (!track || !window.foxsmusic?.selectAudioFiles) return;
     try {
-      const records = await window.foxsmusic.selectAudioFiles(false);
+      const records = await window.foxsmusic.selectAudioFiles(false, currentLocale);
       const record = records[0];
       if (!record) return;
       const wasCurrent = currentTrackId === trackId;
@@ -1875,7 +3555,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
         playlists, tracks: tracks.map(track => ({ id: track.id, title: track.title, artist: track.artist, album: track.album || '', genre: track.genre || '', year: track.year || '', fileName: track.fileName, addedAt: track.addedAt, duration: track.duration, favorite: !!track.favorite, playlists: track.playlists || [], audioPath: track.audioPath || null, sourceUnavailable: !!track.sourceUnavailable, hasEmbeddedAudio: !!track.audioBlob && !track.audioPath, coverBase64: null }))
       };
       const content = JSON.stringify(backup, null, 2);
-      const result = await window.foxsmusic?.saveBackup?.(content);
+      const result = await window.foxsmusic?.saveBackup?.(content, currentLocale);
       if (!result || result.canceled) return;
       toast(currentLocale === 'en' ? 'Backup saved. Original audio files remain in their folders.' : currentLocale === 'de' ? 'Sicherung gespeichert. Originaldateien bleiben in ihren Ordnern.' : 'Резервная копия сохранена. Оригинальные аудиофайлы остались в своих папках.', 'success');
     } catch (error) { console.error(error); toast('Не удалось создать резервную копию.', 'error'); }
@@ -1883,7 +3563,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
   }
   async function restoreLibraryBackup() {
     try {
-      const selected = await window.foxsmusic?.loadBackup?.();
+      const selected = await window.foxsmusic?.loadBackup?.(currentLocale);
       if (!selected || selected.canceled) return;
       const backup = JSON.parse(selected.content);
       if (backup?.format !== 'foxsmusic-backup' || backup.schemaVersion !== 1 || !Array.isArray(backup.tracks) || !Array.isArray(backup.playlists)) throw new Error('Файл не является резервной копией FoxsMusic v1.');
@@ -1942,11 +3622,11 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     const download = $('#downloadUpdateBtn'), install = $('#installUpdateBtn');
     download.hidden = true; install.hidden = true;
     if (!payload) return;
-    if (payload.status === 'available') { label.textContent = `Доступна версия ${payload.version || ''}.`; download.hidden = false; }
-    else if (payload.status === 'not-available') label.textContent = 'Установлена последняя доступная версия.';
-    else if (payload.status === 'progress') { label.textContent = `Загрузка обновления: ${payload.percent || 0}%.`; download.hidden = true; }
-    else if (payload.status === 'downloaded') { label.textContent = `Версия ${payload.version || ''} готова к установке.`; install.hidden = false; }
-    else if (payload.status === 'error') label.textContent = `Ошибка обновления: ${String(payload.message || 'неизвестная ошибка').slice(0, 180)}`;
+    if (payload.status === 'available') { label.textContent = translateInlineSegments(`Доступна версия ${payload.version || ''}.`); download.hidden = false; }
+    else if (payload.status === 'not-available') label.textContent = translateInlineSegments('Установлена последняя доступная версия.');
+    else if (payload.status === 'progress') { label.textContent = translateInlineSegments(`Загрузка обновления: ${payload.percent || 0}%.`); download.hidden = true; }
+    else if (payload.status === 'downloaded') { label.textContent = translateInlineSegments(`Версия ${payload.version || ''} готова к установке.`); install.hidden = false; }
+    else if (payload.status === 'error') label.textContent = translateInlineSegments(`Ошибка обновления: ${String(payload.message || 'неизвестная ошибка').slice(0, 180)}`);
   }
   async function checkForUpdates() {
     const button = $('#checkUpdatesBtn'); if (button) { button.disabled = true; button.textContent = 'Проверяю…'; }
@@ -1970,19 +3650,19 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
       button.type = 'button';
       button.className = 'studio-preset custom-studio-preset';
       button.textContent = name;
-      button.title = `Применить пресет «${name}»`;
+      button.title = translateInlineSegments(`Применить пресет «${name}»`);
       button.addEventListener('click', () => {
         Object.assign(audioSettings, preset);
         applyAudioSettings();
-        toast(`Пресет «${name}» применён`, 'success');
+        toast(translateInlineSegments(`Пресет «${name}» применён`), 'success');
       });
 
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
       deleteButton.className = 'custom-preset-delete';
       deleteButton.textContent = '×';
-      deleteButton.title = `Удалить пресет «${name}»`;
-      deleteButton.setAttribute('aria-label', `Удалить пресет «${name}»`);
+      deleteButton.title = translateInlineSegments(`Удалить пресет «${name}»`);
+      deleteButton.setAttribute('aria-label', translateInlineSegments(`Удалить пресет «${name}»`));
       deleteButton.addEventListener('click', () => confirmDeleteCustomEqPreset(name));
 
       item.append(button, deleteButton);
@@ -2004,7 +3684,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
       persistSettings();
       renderCustomEqPresets();
       closeModal();
-      toast(`Пресет «${name}» удалён`, 'success');
+      toast(translateInlineSegments(`Пресет «${name}» удалён`), 'success');
     });
   }
   function saveCustomEqPreset() {
@@ -2013,7 +3693,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
       const name = $('#customEqPresetName', ui.modalRoot).value.trim(); if (!name) { toast('Введи название пресета.'); return; }
       customEqPresets[name] = { bass: audioSettings.bass, mid: audioSettings.mid, treble: audioSettings.treble, gain: audioSettings.gain };
       const entries = Object.entries(customEqPresets); if (entries.length > 12) customEqPresets = Object.fromEntries(entries.slice(-12));
-      persistSettings(); renderCustomEqPresets(); closeModal(); toast(`Пресет «${name}» сохранён`, 'success');
+      persistSettings(); renderCustomEqPresets(); closeModal(); toast(translateInlineSegments(`Пресет «${name}» сохранён`), 'success');
     });
   }
 
@@ -2115,7 +3795,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
          <button class="playlist-choice" data-menu-action="locate">${svgIcon('folder')}<span>${tr('locateOriginal')}</span><span>↗</span></button>`;
     openModal(`<div class="modal-head"><h2>${escapeHTML(track.title)}</h2><p>${escapeHTML(track.artist)}</p></div>
       ${locationBlock}
-      <button class="playlist-choice" data-menu-action="favorite">${svgIcon('heart')}<span>${track.favorite ? 'Убрать из избранного' : 'Добавить в избранное'}</span><span>♥</span></button>
+      <button class="playlist-choice" data-menu-action="favorite">${svgIcon('heart')}<span>${track.favorite ? tr('favoriteRemove') : tr('favoriteAdd')}</span><span>♥</span></button>
       <button class="playlist-choice" data-menu-action="queue">${svgIcon('queue')}<span>Добавить в очередь</span><span>＋</span></button>
       <button class="playlist-choice" data-menu-action="metadata">${svgIcon('sliders')}<span>Редактировать сведения</span><span>✎</span></button>
       <button class="playlist-choice" data-menu-action="playlist">${svgIcon('playlist')}<span>Добавить в плейлист</span><span>＋</span></button>
@@ -2488,7 +4168,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
       bassValue: `${audioSettings.bass > 0 ? '+' : ''}${audioSettings.bass} dB`,
       midValue: `${audioSettings.mid > 0 ? '+' : ''}${audioSettings.mid} dB`,
       trebleValue: `${audioSettings.treble > 0 ? '+' : ''}${audioSettings.treble} dB`,
-      crossfadeValue: `${audioSettings.crossfadeSeconds} с`
+      crossfadeValue: crossfadeSecondsLabel(audioSettings.crossfadeSeconds)
     };
     Object.entries(labels).forEach(([id, value]) => { const output = document.getElementById(id); if (output) output.textContent = value; });
     const crossfadeSlider = $('#crossfadeSlider'); if (crossfadeSlider) { crossfadeSlider.value = String(audioSettings.crossfadeSeconds); setRangeFill(crossfadeSlider); }
@@ -2791,7 +4471,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     if (!audioContext && !ui.audio.paused) ensureAudioEngine();
   }));
   $$('.studio-preset').forEach(button => button.addEventListener('click', () => applyPreset(button.dataset.preset)));
-  $('#crossfadeSlider').addEventListener('input', event => { audioSettings.crossfadeSeconds = clamp(Number(event.target.value) || 0, 0, 8); const output = $('#crossfadeValue'); if (output) output.textContent = `${audioSettings.crossfadeSeconds} с`; setRangeFill(event.target); persistSettings(); });
+  $('#crossfadeSlider').addEventListener('input', event => { audioSettings.crossfadeSeconds = clamp(Number(event.target.value) || 0, 0, 8); const output = $('#crossfadeValue'); if (output) output.textContent = crossfadeSecondsLabel(audioSettings.crossfadeSeconds); setRangeFill(event.target); persistSettings(); });
   $('#normalizeToggle').addEventListener('change', event => { audioSettings.normalizeEnabled = !!event.target.checked; applyAudioSettings(); toast(audioSettings.normalizeEnabled ? 'Выравнивание громкости включено' : 'Выравнивание громкости выключено', 'success'); });
   $('#saveEqPresetBtn').addEventListener('click', saveCustomEqPreset);
   renderCustomEqPresets();
@@ -2801,7 +4481,7 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     $$('.studio-preset').forEach(button => button.classList.toggle('active', button.dataset.preset === 'flat'));
     applyAudioSettings();
     $('#crossfadeSlider').value = String(audioSettings.crossfadeSeconds); $('#normalizeToggle').checked = audioSettings.normalizeEnabled;
-    const fadeOutput = $('#crossfadeValue'); if (fadeOutput) fadeOutput.textContent = `${audioSettings.crossfadeSeconds} с`; setRangeFill($('#crossfadeSlider'));
+    const fadeOutput = $('#crossfadeValue'); if (fadeOutput) fadeOutput.textContent = crossfadeSecondsLabel(audioSettings.crossfadeSeconds); setRangeFill($('#crossfadeSlider'));
     toast('Настройки звука сброшены', 'success');
   });
   const heroCard = $('.hero-card');
