@@ -17,10 +17,10 @@ jobs:
         include:
           - os: windows-latest
             platform: Windows
-            command: dist:win
+            build_args: --win nsis portable
           - os: ubuntu-latest
             platform: Linux
-            command: dist:linux
+            build_args: --linux AppImage deb
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
@@ -36,6 +36,6 @@ jobs:
       - name: Run regression tests
         run: npm test
       - name: Build and publish installers plus updater metadata
-        run: npm run ${{ matrix.command }} -- --publish always
+        run: npx electron-builder ${{ matrix.build_args }} --publish always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -23,7 +23,42 @@ assert.match(main, /const DIALOG_COPY = \{[\s\S]*?en: \{[\s\S]*?de: \{/, 'native
 assert.match(main, /dialogCopy\(locale\)/, 'main-process dialogs should use the active app locale');
 assert.match(preload, /selectAudioFiles: \(allowMultiple = true, locale = 'ru'\)/, 'preload should pass the active locale into native dialogs');
 assert.match(styles, /content:attr\(data-drop-hint\)/, 'drag overlay copy should be supplied by the current locale');
-assert.match(app, /renderCustomEqPresets\(\);\s*\n  }\n  function newId\(\)/, 'preset controls should refresh their localized accessible labels');
+const deletePresetStart = app.indexOf(
+  'function confirmDeleteCustomEqPreset(name) {'
+);
+
+const savePresetStart = app.indexOf(
+  'function saveCustomEqPreset()',
+  deletePresetStart
+);
+
+assert.ok(
+  deletePresetStart >= 0 && savePresetStart > deletePresetStart,
+  'custom preset delete handler should be defined'
+);
+
+const deletePresetSource = app.slice(
+  deletePresetStart,
+  savePresetStart
+);
+
+assert.match(
+  deletePresetSource,
+  /delete customEqPresets\[name\]/,
+  'deleting a preset should remove it from storage'
+);
+
+assert.match(
+  deletePresetSource,
+  /persistSettings\(\)/,
+  'deleting a preset should persist settings'
+);
+
+assert.match(
+  deletePresetSource,
+  /renderCustomEqPresets\(\)/,
+  'deleting a preset should refresh the preset list'
+);
 
 // Verify real phrase coverage for both non-Russian locales, including mixed/dynamic UI copy.
 const dictionaryMatch = app.match(/const INLINE_TRANSLATIONS = new Map\(Object\.entries\(([\s\S]*?)\)\.map/);
