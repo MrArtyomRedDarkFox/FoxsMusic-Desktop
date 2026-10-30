@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "FoxsMusic",
+    "slug": "foxsmusic-android",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "com.artyomreddarkfox.foxsmusic.mobile",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#08070a"
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "permissions": [
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": true,
+          "enableBackgroundRecording": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      "expo-document-picker",
+      "expo-file-system",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#08070a"
+        }
+      ],
+      "expo-asset"
+    ],
+    "extra": {
+      "product": "FoxsMusic Mobile",
+      "desktopRepository": "MrArtyomRedDarkFox/FoxsMusic-Desktop"
+    }
+  }
+}
