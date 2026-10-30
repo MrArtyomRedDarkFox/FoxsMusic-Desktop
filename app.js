@@ -3604,13 +3604,196 @@ ${(group.duplicatePaths || []).slice(0, 5).map(escapeHTML).join('\n')}${(group.d
     } catch (error) { console.error(error); toast('Не удалось создать резервную копию.', 'error'); }
     finally { if (button) { button.disabled = false; button.textContent = 'Создать копию'; } }
   }
-  async function restoreLibraryBackup() {
-    try {
-      const selected = await window.foxsmusic?.loadBackup?.(currentLocale);
-      if (!selected || selected.canceled) return;
-      const backup = JSON.parse(selected.content);
-      if (backup?.format !== 'foxsmusic-backup' || backup.schemaVersion !== 1 || !Array.isArray(backup.tracks) || !Array.isArray(backup.playlists)) throw new Error('Файл не является резервной копией FoxsMusic v1.');
-      openModal(`<h2>Восстановить резервную копию?</h2><p>Будут объединены ${backup.tracks.length} записей, плейлисты и настройки. Текущая библиотека не будет полностью очищена. Пути к оригинальным аудиофайлам должны быть доступны на этом компьютере.</p><div class="modal-actions"><button class="modal-cancel" data-close-modal>Отмена</button><button class="modal-submit" id="confirmRestoreBackup">Восстановить</button></div>`);
+   function validateLibraryBackup(backup) {
+     const invalid = message => ({ valid: false, message });
+     const MAX_TRACKS = 10000;
+     const MAX_PLAYLISTS = 1000;
+     const MAX_PLAYLIST_MEMBERSHIPS = 1000;
+
+     if (!backup || typeof backup !== 'object' || Array.isArray(backup)) {
+       return invalid('Некорректная структура резервной копии.');
+     }
+
+     if (backup.format !== 'foxsmusic-backup' || backup.schemaVersion !== 1) {
+       return invalid('Неподдерживаемый формат резервной копии.');
+     }
+
+     if (!Array.isArray(backup.tracks) || !Array.isArray(backup.playlists)) {
+       return invalid('Отсутствует список треков или плейлистов.');
+     }
+
+     if (backup.tracks.length > MAX_TRACKS) {
+       return invalid(`Слишком много треков: максимум ${MAX_TRACKS}.`);
+     }
+
+     if (backup.playlists.length > MAX_PLAYLISTS) {
+       return invalid(`Слишком много плейлистов: максимум ${MAX_PLAYLISTS}.`);
+     }
+
+     if (
+       backup.createdAt !== undefined &&
+       (typeof backup.createdAt !== 'string' ||
+         !Number.isFinite(Date.parse(backup.createdAt)))
+     ) {
+       return invalid('Некорректная дата создания резервной копии.');
+     }
+
+     if (
+       backup.source !== undefined &&
+       (typeof backup.source !== 'string' || backup.source.length > 128)
+     ) {
+       return invalid('Некорректный источник резервной копии.');
+     }
+
+     if (
+       backup.settings !== undefined &&
+       (!backup.settings ||
+         typeof backup.settings !== 'object' ||
+         Array.isArray(backup.settings))
+     ) {
+       return invalid('Настройки резервной копии повреждены.');
+     }
+
+     const playlistIds = new Set();
+
+     for (const playlist of backup.playlists) {
+       if (
+         !playlist ||
+         typeof playlist !== 'object' ||
+         Array.isArray(playlist) ||
+         typeof playlist.name !== 'string' ||
+         !playlist.name.trim() ||
+         playlist.name.length > 256
+       ) {
+         return invalid('Обнаружен повреждённый плейлист.');
+       }
+
+       if (
+         playlist.id !== undefined &&
+         playlist.id !== null &&
+         (typeof playlist.id !== 'string' ||
+           !playlist.id.trim() ||
+           playlist.id.length > 160)
+       ) {
+         return invalid('Некорректный идентификатор плейлиста.');
+       }
+
+       if (typeof playlist.id === 'string') {
+         if (playlistIds.has(playlist.id)) {
+           return invalid('Обнаружены повторяющиеся ID плейлистов.');
+         }
+         playlistIds.add(playlist.id);
+       }
+
+       if (
+         playlist.createdAt !== undefined &&
+         playlist.createdAt !== null &&
+         (!Number.isFinite(playlist.createdAt) || playlist.createdAt < 0)
+       ) {
+         return invalid('Некорректная дата создания плейлиста.');
+       }
+     }
+
+     const trackIds = new Set();
+     const stringLimits = {
+       title: 1000,
+       artist: 1000,
+       album: 1000,
+       genre: 1000,
+       year: 64,
+       fileName: 1024,
+       audioPath: 32768
+     };
+
+     for (const track of backup.tracks) {
+       if (
+         !track ||
+         typeof track !== 'object' ||
+         Array.isArray(track) ||
+         typeof track.title !== 'string' ||
+         !track.title.trim() ||
+         track.title.length > stringLimits.title
+       ) {
+         return invalid('Обнаружена повреждённая запись трека.');
+       }
+
+       if (
+         track.id !== undefined &&
+         track.id !== null &&
+         (typeof track.id !== 'string' ||
+           !track.id.trim() ||
+           track.id.length > 160)
+       ) {
+         return invalid('Некорректный идентификатор трека.');
+       }
+
+       if (typeof track.id === 'string') {
+         if (trackIds.has(track.id)) {
+           return invalid('Обнаружены повторяющиеся ID треков.');
+         }
+         trackIds.add(track.id);
+       }
+
+       for (const [field, maxLength] of Object.entries(stringLimits)) {
+         const value = track[field];
+         if (
+           value !== undefined &&
+           value !== null &&
+           (typeof value !== 'string' || value.length > maxLength)
+         ) {
+           return invalid(`Некорректное поле трека: ${field}.`);
+         }
+       }
+
+       for (const field of ['addedAt', 'duration']) {
+         const value = track[field];
+         if (
+           value !== undefined &&
+           value !== null &&
+           (!Number.isFinite(value) || value < 0)
+         ) {
+           return invalid(`Некорректное поле трека: ${field}.`);
+         }
+       }
+
+       for (const field of ['favorite', 'sourceUnavailable', 'hasEmbeddedAudio']) {
+         if (
+           track[field] !== undefined &&
+           typeof track[field] !== 'boolean'
+         ) {
+           return invalid(`Некорректное поле трека: ${field}.`);
+         }
+       }
+
+       if (
+         track.playlists !== undefined &&
+         (!Array.isArray(track.playlists) ||
+           track.playlists.length > MAX_PLAYLIST_MEMBERSHIPS ||
+           !track.playlists.every(
+             id => typeof id === 'string' && id.length > 0 && id.length <= 160
+           ))
+       ) {
+         return invalid('Повреждён список плейлистов трека.');
+       }
+     }
+
+     return { valid: true, message: '' };
+   }
+
+ async function restoreLibraryBackup() {
+  try {
+    const selected = await window.foxsmusic?.loadBackup?.(currentLocale);
+    if (!selected || selected.canceled) return;
+
+    const backup = JSON.parse(selected.content);
+
+    const validation = validateLibraryBackup(backup);
+
+    if (!validation.valid) {
+      throw new Error(validation.message);
+    }
+
+    openModal(`<h2>Восстановить резервную копию?</h2><p>Будут объединены ${backup.tracks.length} записей, плейлисты и настройки. Текущая библиотека не будет полностью очищена. Пути к оригинальным аудиофайлам должны быть доступны на этом компьютере.</p><div class="modal-actions"><button class="modal-cancel" data-close-modal>Отмена</button><button class="modal-submit" id="confirmRestoreBackup">Восстановить</button></div>`);
       $('#confirmRestoreBackup', ui.modalRoot).addEventListener('click', async () => {
         const button = $('#confirmRestoreBackup', ui.modalRoot); button.disabled = true; button.textContent = 'Восстанавливаю…';
         try {

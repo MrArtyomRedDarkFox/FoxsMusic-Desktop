@@ -19,9 +19,9 @@
     "test:shuffle-stop": "node tests/shuffle-stop.test.cjs",
     "test:fullscreen": "node tests/fullscreen-shortcut.test.cjs",
     "test:storage": "node tests/indexeddb-storage.test.cjs",
-    "test": "npm run test:shuffle-stop && npm run test:repeat && npm run test:hotkeys && npm run test:now-playing && npm run test:localization && npm run test:fullscreen && npm run test:storage",
-    "test:localization": "node tests/localization-smoke.test.cjs"
-
+    "test": "npm run test:shuffle-stop && npm run test:repeat && npm run test:hotkeys && npm run test:now-playing && npm run test:localization && npm run test:fullscreen && npm run test:storage && npm run test:backup-validation",
+    "test:localization": "node tests/localization-smoke.test.cjs",
+    "test:backup-validation": "node tests/backup-validation.test.cjs"
   },
   "dependencies": {
     "music-metadata": "^12.3.2",
