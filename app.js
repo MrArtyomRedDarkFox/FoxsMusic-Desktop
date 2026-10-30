@@ -2095,18 +2095,61 @@
     });
     return dbPromise;
   }
+
   async function storeRequest(mode, action) {
     const database = await openDB();
+
     return new Promise((resolve, reject) => {
-      const transaction = database.transaction(STORE_NAME, mode);
-      const store = transaction.objectStore(STORE_NAME);
+      let transaction;
       let request;
-      try { request = action(store); } catch (error) { reject(error); return; }
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.error || new Error('Ошибка базы данных'));
-      transaction.onerror = () => reject(transaction.error || new Error('Не удалось сохранить библиотеку'));
+      let result;
+      let settled = false;
+
+      const fail = error => {
+        if (settled) return;
+        settled = true;
+        reject(error || new Error(
+          'Операция с базой библиотеки не выполнена'
+        ));
+      };
+
+      try {
+        transaction = database.transaction(STORE_NAME, mode);
+        const store = transaction.objectStore(STORE_NAME);
+        request = action(store);
+      } catch (error) {
+        fail(error);
+        return;
+      }
+
+      request.onsuccess = () => {
+        result = request.result;
+      };
+
+      request.onerror = () => {
+        fail(request.error || new Error('Ошибка базы данных'));
+      };
+
+      transaction.oncomplete = () => {
+        if (settled) return;
+        settled = true;
+        resolve(result);
+      };
+
+      transaction.onerror = () => {
+        fail(transaction.error || new Error(
+          'Не удалось сохранить библиотеку'
+        ));
+      };
+
+      transaction.onabort = () => {
+        fail(transaction.error || new Error(
+          'Операция с базой библиотеки отменена'
+        ));
+      };
     });
   }
+
   function serializableTrack(track) {
     return {
       id: track.id, title: track.title, artist: track.artist, album: track.album || '', genre: track.genre || '', year: track.year || '', fileName: track.fileName,

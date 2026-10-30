@@ -17,8 +17,11 @@
     "test:now-playing": "node tests/now-playing-button.test.cjs",
     "test:repeat": "node tests/repeat-mode.test.cjs",
     "test:shuffle-stop": "node tests/shuffle-stop.test.cjs",
-    "test": "npm run test:shuffle-stop && npm run test:repeat && npm run test:hotkeys && npm run test:now-playing && npm run test:localization",
+    "test:fullscreen": "node tests/fullscreen-shortcut.test.cjs",
+    "test:storage": "node tests/indexeddb-storage.test.cjs",
+    "test": "npm run test:shuffle-stop && npm run test:repeat && npm run test:hotkeys && npm run test:now-playing && npm run test:localization && npm run test:fullscreen && npm run test:storage",
     "test:localization": "node tests/localization-smoke.test.cjs"
+
   },
   "dependencies": {
     "music-metadata": "^12.3.2",
